@@ -23,5 +23,12 @@ public class MarketLoader : MonoBehaviour
             Debug.Log("This Would Make The Market Appear!"); // Temporary Debug Log Message
             Debug.Log("This Would Make The Market Appear!"); // Temporary Debug Log Message
         }
+
+        if (other.tag == "FishMarketTag") // If The Player Walks Into The "GeneralMarket" Tag
+        {
+            Debug.Log("This Would Make The Fish Market Appear!"); // Temporary Debug Log Message
+            Debug.Log("This Would Make The Fish Market Appear!"); // Temporary Debug Log Message
+            Debug.Log("This Would Make The Fish Market Appear!"); // Temporary Debug Log Message
+        }
     }
   }

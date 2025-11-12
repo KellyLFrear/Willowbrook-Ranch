@@ -21,5 +21,10 @@ public class LevelLoader : MonoBehaviour
         { // If The Player Hits The Object With The "TownToBeachExit" Tag
             SceneManager.LoadScene("Scene3-Beach"); // Loads The Beach Scene
         }
+
+        if (other.tag == "BeachToTownExit")
+        { // If The Player Hits The Object With The "BeachToTownExit" Tag
+            SceneManager.LoadScene("Scene2-Town"); // Loads The Town Scene
+        }
     }
 }
