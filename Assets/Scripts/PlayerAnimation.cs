@@ -17,26 +17,18 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        //way to check for the spacebar
+        // --- This script ONLY listens for these keys ---
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //trigger for watering animation
-            animator.SetTrigger("doWatering");
+            TriggerWatering();
         }
-          //trigger for interacting 
-        if (Input.GetKeyDown(KeyCode.I)) {
-            animator.SetTrigger("interact");
-        }
-        //trigger for haversting
-        if (Input.GetKeyDown(KeyCode.H)) {
-            animator.SetTrigger("isHarvesting");
-        }
-        //trigger for picking fruit
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            animator.SetTrigger("pickingFruit");
+            TriggerInteract();
         }
+        // --- 'P' and 'H' have been REMOVED ---
 
+        // Walking animation logic
         Vector3 deltaPosition = transform.position - lastPosition;
         float speed = new Vector3(deltaPosition.x, 0, deltaPosition.z).magnitude / Time.deltaTime;
 
@@ -44,5 +36,27 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("isWalking", isWalking);
 
         lastPosition = transform.position;
+    }
+
+    // --- PUBLIC FUNCTIONS for other scripts (like PlayerPlanting) to call ---
+
+    public void TriggerWatering()
+    {
+        if (animator) animator.SetTrigger("doWatering");
+    }
+
+    public void TriggerInteract()
+    {
+        if (animator) animator.SetTrigger("interact");
+    }
+
+    public void TriggerHarvesting()
+    {
+        if (animator) animator.SetTrigger("isHarvesting");
+    }
+
+    public void TriggerPickingFruit()
+    {
+        if (animator) animator.SetTrigger("pickingFruit");
     }
 }
