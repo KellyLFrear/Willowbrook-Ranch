@@ -19,8 +19,8 @@ public class FishingSpot : MonoBehaviour
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, interactRadius);
         bool near = false;
-        foreach (var h in hits)
-            if (h.CompareTag("Player")) { near = true; break; }
+        for (int i = 0; i < hits.Length; i++)
+            if (hits[i].CompareTag("Player")) { near = true; break; }
 
         if (near && !isNear)
         {
@@ -35,6 +35,8 @@ public class FishingSpot : MonoBehaviour
         {
             isNear = false;
             if (promptText != null) promptText.gameObject.SetActive(false);
+            if (castController != null && castController.minigameRoot != null)
+                castController.minigameRoot.SetActive(false);
         }
 
         if (isNear && Input.GetKeyDown(interactKey) && castController != null)

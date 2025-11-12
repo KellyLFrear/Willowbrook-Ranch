@@ -7,7 +7,8 @@ public class FishingMinigame : MonoBehaviour
     public Image barFill;
     public TextMeshProUGUI keyPromptText;
     public TextMeshProUGUI percentText;
-    public PlayerMove playerMove;  
+    public PlayerMove playerMove;
+    public GameObject minigameRoot;
 
     [Range(0f, 1f)] public float startFill = 0.5f;
     public float drainPerSecond = 0.2f;
@@ -16,12 +17,14 @@ public class FishingMinigame : MonoBehaviour
 
     float currentFill;
     bool active;
+    bool waitingForReplay;
     KeyCode currentKey;
     readonly KeyCode[] keys = { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
 
     public void StartMinigame()
     {
         if (playerMove != null) playerMove.enabled = false;
+        waitingForReplay = false;
         currentFill = startFill;
         active = true;
         NewKey();
@@ -30,6 +33,13 @@ public class FishingMinigame : MonoBehaviour
 
     void Update()
     {
+        if (!active && waitingForReplay)
+        {
+            if (Input.GetKeyDown(KeyCode.Y)) RestartGame();
+            if (Input.GetKeyDown(KeyCode.N)) ExitGame();
+            return;
+        }
+
         if (!active) return;
 
         currentFill -= drainPerSecond * Time.deltaTime;
@@ -40,18 +50,8 @@ public class FishingMinigame : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)) Check(KeyCode.S);
         if (Input.GetKeyDown(KeyCode.D)) Check(KeyCode.D);
 
-        if (currentFill <= 0f)
-        {
-            active = false;
-            keyPromptText.text = "You Lost!";
-            if (playerMove != null) playerMove.enabled = true;
-        }
-        else if (currentFill >= 1f)
-        {
-            active = false;
-            keyPromptText.text = "You Win!";
-            if (playerMove != null) playerMove.enabled = true;
-        }
+        if (currentFill <= 0f) Lose();
+        else if (currentFill >= 1f) Win();
 
         UpdateUI();
     }
@@ -67,12 +67,39 @@ public class FishingMinigame : MonoBehaviour
     void NewKey()
     {
         currentKey = keys[Random.Range(0, keys.Length)];
-        keyPromptText.text = "Press: " + currentKey;
+        if (keyPromptText != null) keyPromptText.text = "Press: " + currentKey;
+    }
+
+    void Win()
+    {
+        active = false;
+        if (keyPromptText != null) keyPromptText.text = "You Win!";
+        if (playerMove != null) playerMove.enabled = true;
+    }
+
+    void Lose()
+    {
+        active = false;
+        waitingForReplay = true;
+        if (keyPromptText != null) keyPromptText.text = "You lost! Play again? (Y/N)";
+    }
+
+    void RestartGame()
+    {
+        waitingForReplay = false;
+        StartMinigame();
+    }
+
+    public void ExitGame()
+    {
+        waitingForReplay = false;
+        if (playerMove != null) playerMove.enabled = true;
+        if (minigameRoot != null) minigameRoot.SetActive(false);
     }
 
     void UpdateUI()
     {
-        barFill.fillAmount = currentFill;
-        percentText.text = Mathf.RoundToInt(currentFill * 100f) + "%";
+        if (barFill != null) barFill.fillAmount = currentFill;
+        if (percentText != null) percentText.text = Mathf.RoundToInt(currentFill * 100f) + "%";
     }
 }
