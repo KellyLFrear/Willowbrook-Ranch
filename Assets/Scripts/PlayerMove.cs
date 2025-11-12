@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
     void OnEnable()
     {
         Debug.Log("PlayerMove script is enabled");
-        this.transform.position = new Vector3(49.0f, 0f, 265.0f);
+        //this.transform.position = new Vector3(49.0f, 0f, 265.0f);
 
         moveAction = InputSystem.actions.FindAction("Move");
         moveAction.Enable();
