@@ -7,8 +7,8 @@ public class PlayerMove : MonoBehaviour
 {
     public Rigidbody rb;
 
-    public float forwardSpeed = 1f;
-    public float sidewaySpeed = 1f;
+    public float forwardSpeed = 3f; // Speed for W/S keys
+    public float rotationSpeed = 100f; // Speed for A/D keys (in degrees per second)
 
     InputAction moveAction;
     Vector2 moveValue;
@@ -16,6 +16,9 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        // --- IMPORTANT ---
+        // Make sure to freeze rotation in the Rigidbody inspector
+        // so the player doesn't tip over!
     }
 
     void OnEnable()
@@ -39,14 +42,26 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
+        MoveAndRotatePlayer();
     }
 
-    private void MovePlayer()
+    private void MoveAndRotatePlayer()
     {
-        Vector3 forwardMove = transform.forward * moveValue.y * forwardSpeed;
-        Vector3 sideMove = transform.right * moveValue.x * sidewaySpeed;
-        Vector3 finalMove = (forwardMove + sideMove) * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + finalMove);
+        // --- Forward/Backward Movement (from W/S keys) ---
+        float forwardInput = moveValue.y;
+        Vector3 forwardMove = transform.forward * forwardInput * forwardSpeed;
+
+        // Apply forward velocity, but keep the current Y velocity (for gravity)
+        rb.linearVelocity = new Vector3(forwardMove.x, rb.linearVelocity.y, forwardMove.z);
+
+        // --- Left/Right Rotation (from A/D keys) ---
+        float rotateInput = moveValue.x;
+
+        // Calculate rotation amount in degrees
+        float yaw = rotateInput * rotationSpeed * Time.fixedDeltaTime;
+        Quaternion rotation = Quaternion.Euler(0f, yaw, 0f);
+
+        // Apply the rotation to the Rigidbody
+        rb.MoveRotation(rb.rotation * rotation);
     }
 }
