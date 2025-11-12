@@ -8,8 +8,8 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private LightingPreset Preset;
 
     [Header("Game Day Window (Hours)")]
-    [SerializeField, Range(0f, 24f)] private float startHour = 8f;   // 08:00
-    [SerializeField, Range(0f, 24f)] private float endHour = 24f;    // 24:00 (midnight)
+    [SerializeField, Range(0f, 24f)] private float startHour = 8f;    // 08:00
+    [SerializeField, Range(0f, 24f)] private float endHour = 24f;     // 24:00 (midnight)
 
     [Header("Clock")]
     [SerializeField, Range(0f, 24f)] private float TimeOfDay = 8f;
@@ -18,7 +18,6 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private bool autoRestartNextDay = false;
 
     public event Action OnPassOut;
-
     private bool _passedOutThisFrame = false;
 
     // For debug logging
@@ -59,7 +58,10 @@ public class LightingManager : MonoBehaviour
                 }
 
                 if (autoRestartNextDay)
-                    TimeOfDay = startHour;
+                {
+                    // If we auto-restart, this will trigger the new day
+                    ResetToStartOfDay();
+                }
             }
 
             // Log hour/minute once per in-game minute
@@ -119,6 +121,21 @@ public class LightingManager : MonoBehaviour
         TimeOfDay = Mathf.Clamp(TimeOfDay, 0f, 24f);
     }
 
-    public void ResetToStartOfDay() => TimeOfDay = startHour;
+    // --- MODIFICATION HERE ---
+    // This is the function that starts a new day
+    public void ResetToStartOfDay()
+    {
+        TimeOfDay = startHour;
+
+        // --- ADD THIS ---
+        // Tell the PlantManager to grow all plants for the new day.
+        Debug.Log("[LightingManager] Resetting to start of day. Advancing plant growth.");
+        if (PlantManager.Instance != null)
+        {
+            PlantManager.Instance.AdvanceDay();
+        }
+        // --- END ADDITION ---
+    }
+
     public float GetTimeOfDay() => TimeOfDay;
 }
