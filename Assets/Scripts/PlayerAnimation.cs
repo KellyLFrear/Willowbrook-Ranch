@@ -4,15 +4,17 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator animator;
+    private PlayerMove playerMove; // <-- ADD THIS
 
-    // For walking
-    private Vector3 lastPosition;
-    public float speedThreshold = 0.1f;
+    // --- We don't need these anymore ---
+    // private Vector3 lastPosition;
+    // public float speedThreshold = 0.1f;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        lastPosition = transform.position;
+        playerMove = GetComponent<PlayerMove>(); // <-- ADD THIS
+        // lastPosition = transform.position; // <-- REMOVE THIS
     }
 
     void Update()
@@ -26,9 +28,9 @@ public class PlayerAnimation : MonoBehaviour
         {
             TriggerInteract();
         }
-        // --- 'P' and 'H' have been REMOVED ---
 
-        // Walking animation logic
+        // --- REMOVE ALL THIS OLD LOGIC ---
+        /*
         Vector3 deltaPosition = transform.position - lastPosition;
         float speed = new Vector3(deltaPosition.x, 0, deltaPosition.z).magnitude / Time.deltaTime;
 
@@ -36,7 +38,26 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("isWalking", isWalking);
 
         lastPosition = transform.position;
+        */
+
+        // --- ADD THIS NEW LOGIC ---
+        UpdateWalkingAnimation();
     }
+
+    private void UpdateWalkingAnimation()
+    {
+        if (playerMove == null) return; // Safety check
+
+        // Read the 'y' value (W/S keys) from the PlayerMove script.
+        // We use Mathf.Abs() because moving backward (input of -1) is also "walking".
+        float moveInput = playerMove.MoveValue.y;
+        bool isWalking = Mathf.Abs(moveInput) > 0.1f; // 0.1f acts as a small "deadzone"
+
+        // This bool will now stay 'true' as long as W or S is held down,
+        // allowing the animation to loop smoothly.
+        animator.SetBool("isWalking", isWalking);
+    }
+
 
     // --- PUBLIC FUNCTIONS for other scripts (like PlayerPlanting) to call ---
 

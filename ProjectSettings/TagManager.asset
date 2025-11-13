@@ -9,7 +9,6 @@ TagManager:
   - GeneralStoreTag
   - BeachToTownExit
   - FishMarketTag
-  - FarmToTownExit
   layers:
   - Default
   - TransparentFX
@@ -19,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PlantableGround
   - 
   - 
   - 
