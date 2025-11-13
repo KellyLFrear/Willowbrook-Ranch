@@ -11,21 +11,19 @@ public class PlayerMove : MonoBehaviour
     public float rotationSpeed = 100f; // Speed for A/D keys (in degrees per second)
 
     InputAction moveAction;
-    Vector2 moveValue;
+
+    
+    public Vector2 MoveValue { get; private set; }
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        // --- IMPORTANT ---
-        // Make sure to freeze rotation in the Rigidbody inspector
-        // so the player doesn't tip over!
     }
 
     void OnEnable()
     {
         Debug.Log("PlayerMove script is enabled");
-        //this.transform.position = new Vector3(49.0f, 0f, 265.0f);
-
         moveAction = InputSystem.actions.FindAction("Move");
         moveAction.Enable();
     }
@@ -37,7 +35,10 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        moveValue = moveAction.ReadValue<Vector2>();
+        // --- CHANGE THIS ---
+        // moveValue = moveAction.ReadValue<Vector2>();
+        // --- TO THIS ---
+        MoveValue = moveAction.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
@@ -47,21 +48,17 @@ public class PlayerMove : MonoBehaviour
 
     private void MoveAndRotatePlayer()
     {
-        // --- Forward/Backward Movement (from W/S keys) ---
-        float forwardInput = moveValue.y;
-        Vector3 forwardMove = transform.forward * forwardInput * forwardSpeed;
+       
+        float forwardInput = MoveValue.y;
 
-        // Apply forward velocity, but keep the current Y velocity (for gravity)
+        Vector3 forwardMove = transform.forward * forwardInput * forwardSpeed;
         rb.linearVelocity = new Vector3(forwardMove.x, rb.linearVelocity.y, forwardMove.z);
 
-        // --- Left/Right Rotation (from A/D keys) ---
-        float rotateInput = moveValue.x;
+        
+        float rotateInput = MoveValue.x;
 
-        // Calculate rotation amount in degrees
         float yaw = rotateInput * rotationSpeed * Time.fixedDeltaTime;
         Quaternion rotation = Quaternion.Euler(0f, yaw, 0f);
-
-        // Apply the rotation to the Rigidbody
         rb.MoveRotation(rb.rotation * rotation);
     }
 }
