@@ -1,32 +1,43 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlantableTile : MonoBehaviour
 {
     public bool isOccupied = false;
     private PlantGrowth currentPlant = null;
 
-    // Updated TryPlant � now takes the hit position
+    // Updated TryPlant — now takes the hit position
     public bool TryPlant(GameObject plantPrefab, Vector3 hitPoint)
     {
         if (isOccupied)
         {
-            Debug.Log($"Tile {name} is already occupied.");
+            Debug.Log($"[TILE] {name} is already occupied.");
             return false;
         }
 
         if (plantPrefab == null)
         {
-            Debug.LogError("No plantPrefab provided!");
+            Debug.LogError("[TILE] No plant prefab assigned!");
             return false;
         }
 
-        // Debug info
-        Debug.Log($"Planting on tile '{name}' at tilePos={transform.position}, hitPos={hitPoint}");
+        // The tile's world position
+        Vector3 spawnPos = transform.position + Vector3.up * 0.1f;
 
-        // Spawn at hit position (slightly above ground)
-        Vector3 spawnPos = new Vector3(hitPoint.x, hitPoint.y + 0.1f, hitPoint.z);
+        // DEBUG INFO — this is the important part
+        Debug.Log(
+            $"[TILE] {name}\n" +
+            $" - Tile Position:      {transform.position}\n" +
+            $" - Raycast Hit Point:  {hitPoint}\n" +
+            $" - Calculated Spawn:   {spawnPos}"
+        );
+
+        // Instantiate plant
         GameObject plantObject = Instantiate(plantPrefab, spawnPos, Quaternion.identity);
 
+        // Debug the actual spawned position
+        Debug.Log($"[PLANT] Spawned plant object at: {plantObject.transform.position}");
+
+        // Store reference + assign tile
         currentPlant = plantObject.GetComponent<PlantGrowth>();
         if (currentPlant != null)
         {
@@ -34,13 +45,13 @@ public class PlantableTile : MonoBehaviour
         }
         else
         {
-            Debug.LogError("The plant prefab has no PlantGrowth script attached!");
+            Debug.LogError("[TILE] Plant prefab is missing PlantGrowth script!");
         }
 
         isOccupied = true;
-        Debug.Log($"Plant successfully placed on {name} at {spawnPos}");
         return true;
     }
+
 
     public bool TryHarvest()
     {
