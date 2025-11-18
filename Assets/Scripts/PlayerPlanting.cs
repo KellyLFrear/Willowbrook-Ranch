@@ -4,39 +4,33 @@ public class PlayerPlanting : MonoBehaviour
 {
     [Header("Setup (Drag These In!)")]
     public GameObject plantPrefab;
-    public Camera mainCamera;
+    public Camera mainCamera; // Still kept just in case, though we use player position now
+    public LayerMask plantableLayer; // IMPORTANT: Assign "PlantableGround" here in Inspector
 
     [Header("Settings")]
-    public float plantDistance = 15f;
+    // How far down we check for a tile. 2.0f is usually enough to reach the ground.
+    public float interactionDistance = 2.0f;
 
     private PlayerAnimation playerAnimation;
 
     void Start()
     {
-        if (mainCamera == null)
-        {
-            mainCamera = Camera.main;
-            if (mainCamera == null)
-            {
-                Debug.LogError("---!!! PLAYER PLANTING SCRIPT FAILED ---!!! You must assign a Main Camera!");
-                this.enabled = false;
-                return;
-            }
-        }
+        // Safety checks to prevent errors if things aren't assigned
+        if (mainCamera == null) mainCamera = Camera.main;
 
         if (plantPrefab == null)
         {
-            Debug.LogError("---!!! PLAYER PLANTING SCRIPT FAILED ---!!! You must assign a Plant Prefab!");
+            Debug.LogError("PlayerPlanting: Missing Plant Prefab!");
             this.enabled = false;
             return;
         }
 
         playerAnimation = GetComponent<PlayerAnimation>();
-        Debug.Log("PlayerPlanting.cs is running");
     }
 
     void Update()
     {
+        // Inputs
         if (Input.GetKeyDown(KeyCode.P))
         {
             TryPlant();
@@ -46,59 +40,64 @@ public class PlayerPlanting : MonoBehaviour
             TryHarvest();
         }
 
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-        Debug.DrawRay(ray.origin, ray.direction * plantDistance, Color.cyan);
+        // Debug Visualization: Draws a red line in the Scene view showing where the player is checking
+        // Origin: Feet + slightly up. Direction: Down.
+        Debug.DrawRay(transform.position + Vector3.up, Vector3.down * interactionDistance, Color.red);
     }
 
     public void TryPlant()
     {
-        Debug.Log("'P' key pressed. Trying to plant...");
+        // 1. Create a ray starting at the player's center (slightly up) pointing straight DOWN
+        Ray ray = new Ray(transform.position + Vector3.up, Vector3.down);
 
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-        if (Physics.Raycast(ray, out RaycastHit hit, plantDistance))
+        // 2. Cast the ray. Note: We only hit objects on the 'plantableLayer'
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, plantableLayer))
         {
-            Debug.Log($"Raycast HIT: {hit.collider.name} at {hit.point}");
-
+            // 3. Check if the object we hit has the script
             PlantableTile tile = hit.collider.GetComponent<PlantableTile>();
             if (tile != null)
             {
-                Debug.Log($"Found PlantableTile on: {tile.name}");
+                // 4. Attempt to plant
                 if (tile.TryPlant(plantPrefab, hit.point))
                 {
-                    Debug.Log(" Planting successful!");
-                    playerAnimation?.TriggerPickingFruit();
+                    Debug.Log($"Success! Planted on {tile.name}");
+
+                    // Trigger animation if it exists
+                    if (playerAnimation != null) playerAnimation.TriggerPickingFruit();
                 }
                 else
                 {
-                    Debug.Log("Planting failed (tile occupied?)");
+                    Debug.Log("Could not plant (Tile is occupied).");
                 }
-            }
-            else
-            {
-                Debug.Log("Ray hit something without a PlantableTile component.");
             }
         }
         else
         {
-            Debug.Log("Raycast hit NOTHING.");
+            Debug.Log("TryPlant: No plantable tile found beneath player.");
         }
     }
 
     public void TryHarvest()
     {
-        Debug.Log("'H' key pressed. Trying to harvest...");
+        // 1. Same logic: Cast a ray DOWN from the player
+        Ray ray = new Ray(transform.position + Vector3.up, Vector3.down);
 
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-        if (Physics.Raycast(ray, out RaycastHit hit, plantDistance))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, plantableLayer))
         {
             PlantableTile tile = hit.collider.GetComponent<PlantableTile>();
             if (tile != null)
             {
+                // 2. Attempt to harvest
                 if (tile.TryHarvest())
                 {
-                    playerAnimation?.TriggerHarvesting();
+                    Debug.Log($"Harvested from {tile.name}");
+                    if (playerAnimation != null) playerAnimation.TriggerHarvesting();
                 }
             }
+        }
+        else
+        {
+            Debug.Log("TryHarvest: No tile found beneath player.");
         }
     }
 }
