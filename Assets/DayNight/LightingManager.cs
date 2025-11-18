@@ -4,12 +4,14 @@ using System;
 [ExecuteAlways]
 public class LightingManager : MonoBehaviour
 {
+   public static LightingManager Instance { get; private set; }
+
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
 
     [Header("Game Day Window (Hours)")]
-    [SerializeField, Range(0f, 24f)] private float startHour = 8f;    // 08:00
-    [SerializeField, Range(0f, 24f)] private float endHour = 24f;     // 24:00 (midnight)
+    [SerializeField, Range(0f, 24f)] private float startHour = 8f; // 8:00am
+    [SerializeField, Range(0f, 24f)] private float endHour = 24f; // Midnight
 
     [Header("Clock")]
     [SerializeField, Range(0f, 24f)] private float TimeOfDay = 8f;
@@ -19,9 +21,17 @@ public class LightingManager : MonoBehaviour
 
     public event Action OnPassOut;
     private bool _passedOutThisFrame = false;
-
-    // For debug logging
     private int _lastLoggedMinute = -1;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void OnEnable()
     {
@@ -72,7 +82,8 @@ public class LightingManager : MonoBehaviour
             if (currentMinute != _lastLoggedMinute)
             {
                 _lastLoggedMinute = currentMinute;
-                Debug.Log($"[LightingManager] Time: {currentHour:D2}:{currentMinute:D2}");
+               // We No Longer Need This Script To Print As It Prints In The GUI
+               // Debug.Log($"[LightingManager] Time: {currentHour:D2}:{currentMinute:D2}");
             }
 
             UpdateLighting(TimeOfDay / 24f);
@@ -138,4 +149,23 @@ public class LightingManager : MonoBehaviour
     }
 
     public float GetTimeOfDay() => TimeOfDay;
+
+    // Helper properties for GUI
+    public int CurrentHour
+    {
+        get
+        {
+            int totalMinutes = Mathf.FloorToInt(TimeOfDay * 60f);
+            return totalMinutes / 60;
+        }
+    }
+
+    public int CurrentMinute
+    {
+        get
+        {
+            int totalMinutes = Mathf.FloorToInt(TimeOfDay * 60f);
+            return totalMinutes % 60;
+        }
+    }
 }
