@@ -9,6 +9,8 @@ TagManager:
   - GeneralStoreTag
   - BeachToTownExit
   - FishMarketTag
+  - FarmToTownExit
+  - FarmHomeTag
   layers:
   - Default
   - TransparentFX
