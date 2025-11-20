@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerPlanting : MonoBehaviour
 {
-    [Header("Setup (Drag These In!)")]
+    [Header("Setup")]
     public GameObject plantPrefab;
     public Camera mainCamera; // Still kept just in case, though we use player position now
     public LayerMask plantableLayer; // IMPORTANT: Assign "PlantableGround" here in Inspector
