@@ -1031,8 +1031,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 163063292}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: SkipToNextDay
-        m_Mode: 5
+        m_MethodName: PassedOut
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1109,8 +1109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadScene
   player: {fileID: 1998568020}
-  teleportCoordinates: {x: 4.77, y: 0, z: -1.29}
-  teleportRotationEuler: {x: 0, y: 0, z: 0}
+  frontHouseTeleportCoordinates: {x: 4.77, y: 0, z: -1.29}
+  frontHouseTeleportRotationEuler: {x: 0, y: 0, z: 0}
 --- !u!4 &163063293
 Transform:
   m_ObjectHideFlags: 0
@@ -4039,7 +4039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1104b021edd96b248b0efac0bba81576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmHomeLoader
-  housePopUpPanel: {fileID: 0}
+  housePopUpPanel: {fileID: 195799878}
 --- !u!135 &652030981
 SphereCollider:
   m_ObjectHideFlags: 0

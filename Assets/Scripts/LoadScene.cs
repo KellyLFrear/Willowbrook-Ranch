@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     public Transform player; // The Player Transform
-    public Vector3 teleportCoordinates; // Teleport Coordinates
-    public Vector3 teleportRotationEuler; // Teleport Rotation in Euler Angles
+    public Vector3 frontHouseTeleportCoordinates; // Teleport Coordinates
+    public Vector3 frontHouseTeleportRotationEuler; // Teleport Rotation in Euler Angles
 
     public void LadScenebyName(string name)
     {
@@ -15,13 +15,13 @@ public class LoadScene : MonoBehaviour
     public void SkipToNextDay(string name)
     {
         LightingManager.Instance.SleepToNextDay();
-        TeleportPlayerUsingCoordinates();
+        TeleportPlayerToFrontOfHouse();
     }
 
     public void PassedOut()
     {
         LightingManager.Instance.AdvanceToNextDay(true);
-        TeleportPlayerUsingCoordinates();
+        TeleportPlayerToFrontOfHouse();
         GUIUpdater.Instance.HidePassedOutPopUp();
     }
 
@@ -30,14 +30,14 @@ public class LoadScene : MonoBehaviour
         Debug.Log("This is a temporary message for testing purposes.");
     }
 
-    public void TeleportPlayerUsingCoordinates()
+    public void TeleportPlayerToFrontOfHouse()
     {
         if (player != null)
         {
-            player.position = teleportCoordinates;
-            player.rotation = Quaternion.Euler(teleportRotationEuler);
+            player.position = frontHouseTeleportCoordinates;
+            player.rotation = Quaternion.Euler(frontHouseTeleportRotationEuler);
 
-            Debug.Log($"Player teleported to {teleportCoordinates}");
+            Debug.Log($"Player teleported to {frontHouseTeleportCoordinates}");
         }
     }
 }
