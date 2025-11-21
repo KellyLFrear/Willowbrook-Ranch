@@ -340,7 +340,8 @@ MonoBehaviour:
   endHour: 24
   TimeOfDay: 8
   gameMinutesPerRealSecond: 2
-  autoRestartNextDay: 0
+  daysInMonth: 30
+  currentDay: 1
 --- !u!4 &9671998
 Transform:
   m_ObjectHideFlags: 0
@@ -10071,7 +10072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365096419672485162, guid: 7fb865a45d37d5446851ccf0d26b5616, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.52399194
+      value: -0.42464474
       objectReference: {fileID: 0}
     - target: {fileID: 365096419672485162, guid: 7fb865a45d37d5446851ccf0d26b5616, type: 3}
       propertyPath: m_LocalRotation.x
@@ -10079,7 +10080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365096419672485162, guid: 7fb865a45d37d5446851ccf0d26b5616, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8517233
+      value: -0.90536016
       objectReference: {fileID: 0}
     - target: {fileID: 365096419672485162, guid: 7fb865a45d37d5446851ccf0d26b5616, type: 3}
       propertyPath: m_LocalRotation.z
@@ -10091,7 +10092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365096419672485162, guid: 7fb865a45d37d5446851ccf0d26b5616, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -116.799
+      value: -230.256
       objectReference: {fileID: 0}
     - target: {fileID: 365096419672485162, guid: 7fb865a45d37d5446851ccf0d26b5616, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

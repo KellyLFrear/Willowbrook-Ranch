@@ -4,22 +4,28 @@ using System;
 [ExecuteAlways]
 public class LightingManager : MonoBehaviour
 {
-   public static LightingManager Instance { get; private set; }
+    public static LightingManager Instance { get; private set; }
 
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
+    //[SerializeField] private GUIUpdater guiUpdater;
 
     [Header("Game Day Window (Hours)")]
     [SerializeField, Range(0f, 24f)] private float startHour = 8f; // 8:00am
-    [SerializeField, Range(0f, 24f)] private float endHour = 24f; // Midnight
+    [SerializeField, Range(0f, 24f)] private float endHour = 24f;  // Midnight
 
     [Header("Clock")]
     [SerializeField, Range(0f, 24f)] private float TimeOfDay = 8f;
     [Tooltip("Game minutes advanced per real second. 5s IRL = 10m IG → 2.0")]
     [SerializeField] private float gameMinutesPerRealSecond = 2f;
-    [SerializeField] private bool autoRestartNextDay = false;
+
+    [Header("Calendar")]
+    [SerializeField] private int daysInMonth = 30;
+    [SerializeField] private int currentDay = 1;  // start on Day 1
 
     public event Action OnPassOut;
+    public event Action<int> OnDayChanged;   // passes new day number (1..daysInMonth)
+
     private bool _passedOutThisFrame = false;
     private int _lastLoggedMinute = -1;
 
@@ -27,7 +33,7 @@ public class LightingManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
             return;
         }
         Instance = this;
@@ -37,6 +43,9 @@ public class LightingManager : MonoBehaviour
     {
         startHour = Mathf.Clamp(startHour, 0f, 24f);
         endHour = Mathf.Clamp(endHour, 0f, 24f);
+
+        if (daysInMonth < 1) daysInMonth = 30;
+        currentDay = Mathf.Clamp(currentDay, 1, daysInMonth);
 
         if (Application.isPlaying)
         {
@@ -54,9 +63,11 @@ public class LightingManager : MonoBehaviour
 
         if (Application.isPlaying)
         {
+            // Advance time
             float hoursPerRealSecond = gameMinutesPerRealSecond / 60f;
             TimeOfDay += Time.deltaTime * hoursPerRealSecond;
 
+            // Hit midnight → pass out → next day at 8am
             if (TimeOfDay >= endHour)
             {
                 TimeOfDay = endHour;
@@ -64,17 +75,18 @@ public class LightingManager : MonoBehaviour
                 if (!_passedOutThisFrame)
                 {
                     _passedOutThisFrame = true;
-                    OnPassOut?.Invoke();
-                }
 
-                if (autoRestartNextDay)
-                {
-                    // If we auto-restart, this will trigger the new day
-                    ResetToStartOfDay();
+                    // Debug.Log("[LightingManager] Player passed out at midnight!");
+                    OnPassOut?.Invoke();
+
+                    // Makes Pop Up Window Appear To Inform The Player They Passed Out
+                    GUIUpdater.Instance.ShowPassedOutPopUp();
+                    // Commenting This Out In Case Pop-Ups Don't Work:
+                    // AdvanceToNextDay(fromPassOut: true);
                 }
             }
 
-            // Log hour/minute once per in-game minute
+            // Log hour/minute once per in-game minute (you’re using GUI, so this is optional)
             int totalMinutes = Mathf.FloorToInt(TimeOfDay * 60f);
             int currentHour = totalMinutes / 60;
             int currentMinute = totalMinutes % 60;
@@ -82,8 +94,7 @@ public class LightingManager : MonoBehaviour
             if (currentMinute != _lastLoggedMinute)
             {
                 _lastLoggedMinute = currentMinute;
-               // We No Longer Need This Script To Print As It Prints In The GUI
-               // Debug.Log($"[LightingManager] Time: {currentHour:D2}:{currentMinute:D2}");
+                // Debug.Log($"[LightingManager] Day {currentDay}/{daysInMonth} – Time: {currentHour:D2}:{currentMinute:D2}");
             }
 
             UpdateLighting(TimeOfDay / 24f);
@@ -130,25 +141,55 @@ public class LightingManager : MonoBehaviour
         }
 
         TimeOfDay = Mathf.Clamp(TimeOfDay, 0f, 24f);
+        if (daysInMonth < 1) daysInMonth = 30;
+        currentDay = Mathf.Clamp(currentDay, 1, daysInMonth);
     }
 
-    // --- MODIFICATION HERE ---
-    // This is the function that starts a new day
-    public void ResetToStartOfDay()
+    // --- NEW DAY LOGIC ---
+
+    public void AdvanceToNextDay(bool fromPassOut)
     {
+        // Advance calendar
+        currentDay++;
+        if (currentDay > daysInMonth)
+        {
+            currentDay = 1; // loop back to Day 1 after Day 30
+        }
+
+        // Reset clock to start of day
         TimeOfDay = startHour;
 
-        // --- ADD THIS ---
-        // Tell the PlantManager to grow all plants for the new day.
-        Debug.Log("[LightingManager] Resetting to start of day. Advancing plant growth.");
+        Debug.Log($"[LightingManager] New Day {currentDay} started at {startHour:0}:00 (fromPassOut: {fromPassOut})");
+
+        // Grow plants / daily systems
         if (PlantManager.Instance != null)
         {
             PlantManager.Instance.AdvanceDay();
         }
-        // --- END ADDITION ---
+
+        // Notify UI or systems
+        OnDayChanged?.Invoke(currentDay);
+    }
+
+    /// <summary>
+    /// Manual sleep: call from bed interaction to skip to next day at 8am.
+    /// </summary>
+    public void SleepToNextDay()
+    {
+        AdvanceToNextDay(fromPassOut: false);
+    }
+
+    /// <summary>
+    /// Only reset the clock to 8am without advancing the day (for debugging/cutscenes).
+    /// </summary>
+    public void ResetToStartOfDay()
+    {
+        TimeOfDay = startHour;
+        Debug.Log("[LightingManager] Clock reset to startHour (no day advancement).");
     }
 
     public float GetTimeOfDay() => TimeOfDay;
+    public int CurrentDay => currentDay;
 
     // Helper properties for GUI
     public int CurrentHour

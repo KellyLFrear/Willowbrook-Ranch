@@ -1,26 +1,42 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FarmHomeLoader : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameObject housePopUpPanel; // Reference to the pop-up panel
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        HideHousePopUp(); // Hide the pop-up at game start
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "FarmHomeTag") // If The Player Walks Into The "FarmHome" Tag
+        if (other.CompareTag("Player")) // Player enters the farm home trigger
         {
-            Debug.Log("This Would Make The House Appear!"); // Temporary Debug Log Message
-            Debug.Log("This Would Make The House Appear!"); // Temporary Debug Log Message
-            Debug.Log("This Would Make The House Appear!"); // Temporary Debug Log Message
+            ShowHousePopUp();
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            HideHousePopUp(); // Hide the house pop-up when the player exits
+        }
+    }
+
+    // Function Show The House Pop-Up Window
+    public void ShowHousePopUp()
+    {
+        if (housePopUpPanel != null)
+            housePopUpPanel.SetActive(true); // Shows The Pop-Up Panel That Appears When Entering The Farm Home
+    }
+
+    // Function Hide The House Pop-Up Window
+    public void HideHousePopUp()
+    {
+        if (housePopUpPanel != null)
+            housePopUpPanel.SetActive(false); // Hides The Pop-Up Panel That Appears When Entering The Farm Home
     }
 }
