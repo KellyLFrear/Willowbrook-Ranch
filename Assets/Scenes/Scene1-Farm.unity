@@ -15412,7 +15412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434af4b1b8ea00c4ab2fe99df49bce0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPlanting
-  plantPrefab: {fileID: 4162204128600793851, guid: bddc85582d52cf740aa52dd25976d828, type: 3}
+  plantPrefab: {fileID: 4239377861702343134, guid: be7eac266891841429f2dfbb54f66b8c, type: 3}
   mainCamera: {fileID: 1725117990}
   plantableLayer:
     serializedVersion: 2

@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlantManager : MonoBehaviour
 {
-    // 2. Instance type changed to PlantManager
+    // Singleton Instance
     public static PlantManager Instance;
 
     private List<PlantGrowth> allPlants = new List<PlantGrowth>();
 
     private void Awake()
     {
-        // 3. Instance check changed to PlantManager
         if (Instance == null)
         {
             Instance = this;
@@ -32,25 +31,31 @@ public class PlantManager : MonoBehaviour
 
     public void UnregisterPlant(PlantGrowth plant)
     {
+        // IMPORTANT: Plants that die or are harvested must unregister themselves.
         if (allPlants.Contains(plant))
         {
             allPlants.Remove(plant);
         }
     }
 
-    // 4. The Update() function with the 'T' key is GONE.
-    // This function will now be called by your Day/Night script.
+    /// <summary>
+    /// Global day advance function. Must be called by your day/night system.
+    /// This is where growth and death conditions are evaluated for all plants.
+    /// </summary>
     public void AdvanceDay()
     {
-        Debug.Log("--- NEW DAY --- Advancing plant growth!");
+        Debug.Log("--- NEW DAY --- Advancing plant growth and checking for death!");
 
-        List<PlantGrowth> plantsToGrow = new List<PlantGrowth>(allPlants);
+        // Create a temporary list to iterate over (important in case a plant removes itself)
+        List<PlantGrowth> plantsToAdvance = new List<PlantGrowth>(allPlants);
 
-        foreach (PlantGrowth plant in plantsToGrow)
+        foreach (PlantGrowth plant in plantsToAdvance)
         {
+            // Check for null in case a plant was destroyed during an earlier iteration
             if (plant != null)
             {
-                plant.Grow();
+                // Calls the plant's daily growth/death logic
+                plant.AdvanceDay(); 
             }
         }
     }
