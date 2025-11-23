@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: d34d80a36cc9a92479218025334a0169
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - stage0_Dead: {instanceID: 0}
+  - stage1_Sprout: {instanceID: 0}
+  - stage2_Growing: {instanceID: 0}
+  - stage3_Mature: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

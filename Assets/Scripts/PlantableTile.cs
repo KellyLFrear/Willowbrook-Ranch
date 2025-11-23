@@ -5,7 +5,18 @@ public class PlantableTile : MonoBehaviour
     public bool isOccupied = false;
     private PlantGrowth currentPlant = null;
 
-    // Updated TryPlant — now takes the hit position
+    /// <summary>
+    /// Returns the PlantGrowth component currently on this tile (if any).
+    /// This is needed for interactions like watering.
+    /// </summary>
+    public PlantGrowth GetCurrentPlant()
+    {
+        return currentPlant;
+    }
+
+    /// <summary>
+    /// Attempts to spawn a plant on the tile.
+    /// </summary>
     public bool TryPlant(GameObject plantPrefab, Vector3 hitPoint)
     {
         if (isOccupied)
@@ -20,28 +31,21 @@ public class PlantableTile : MonoBehaviour
             return false;
         }
 
-        // The tile's world position
+        // Calculate spawn position slightly above the tile surface
         Vector3 spawnPos = transform.position + Vector3.up * 0.1f;
-
-        // DEBUG INFO — this is the important part
-        Debug.Log(
-            $"[TILE] {name}\n" +
-            $" - Tile Position:      {transform.position}\n" +
-            $" - Raycast Hit Point:  {hitPoint}\n" +
-            $" - Calculated Spawn:   {spawnPos}"
-        );
-
-        // Instantiate plant
         GameObject plantObject = Instantiate(plantPrefab, spawnPos, Quaternion.identity);
 
-        // Debug the actual spawned position
-        Debug.Log($"[PLANT] Spawned plant object at: {plantObject.transform.position}");
-
-        // Store reference + assign tile
+        // Get the PlantGrowth script, set its tile reference, and register it
         currentPlant = plantObject.GetComponent<PlantGrowth>();
         if (currentPlant != null)
         {
             currentPlant.SetTile(this);
+            
+            // Register the new plant with the global manager
+            if (PlantManager.Instance != null)
+            {
+                PlantManager.Instance.RegisterPlant(currentPlant);
+            }
         }
         else
         {
@@ -53,6 +57,9 @@ public class PlantableTile : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Attempts to harvest the plant on the tile.
+    /// </summary>
     public bool TryHarvest()
     {
         if (!isOccupied || currentPlant == null)
@@ -61,6 +68,7 @@ public class PlantableTile : MonoBehaviour
             return false;
         }
 
+        // Check if the plant is mature before allowing harvest
         if (!currentPlant.IsMature())
         {
             Debug.Log($"Plant on {name} not mature yet.");
@@ -71,6 +79,9 @@ public class PlantableTile : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Clears the tile state after a plant is harvested or destroyed.
+    /// </summary>
     public void ClearTile()
     {
         isOccupied = false;
