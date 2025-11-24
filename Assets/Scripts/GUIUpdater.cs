@@ -41,13 +41,13 @@ public class GUIUpdater : MonoBehaviour
         // Updates The Day GUI
         if (GUIDayMsg != null && LightingManager.Instance != null)
         {
-            GUIDayMsg.text = "Day: " + LightingManager.Instance.CurrentDay;
+            GUIDayMsg.text = " " + LightingManager.Instance.CurrentDay;
         }
 
         // Updates The Funds GUI
         if (GUIFundsMsg != null && FundsAmount.Instance != null)
         {
-            GUIFundsMsg.text = "Gold: " + FundsAmount.Instance.playerMoney + "g";
+            GUIFundsMsg.text = FundsAmount.Instance.playerMoney + "g";
         }
 
         // Updates The Clock GUI
@@ -82,7 +82,7 @@ public class GUIUpdater : MonoBehaviour
                 suffix = "pm"; // Sets Suffix To "pm"
             }
 
-            GUIClockTimeMsg.text = $"Time: {hour12:00}:{minute:00}{suffix}"; // Updates The Clock GUI With Formatted Time
+            GUIClockTimeMsg.text = $"{hour12:00}:{minute:00}{suffix}"; // Updates The Clock GUI With Formatted Time
         }
     }
 
