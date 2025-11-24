@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 [ExecuteAlways]
 public class LightingManager : MonoBehaviour
@@ -31,13 +32,19 @@ public class LightingManager : MonoBehaviour
 
     private void Awake()
     {
+        if (!Application.isPlaying)
+            return;  // prevents DontDestroyOnLoad from running in edit mode
+
         if (Instance != null && Instance != this)
         {
-            DestroyImmediate(gameObject);
+            Destroy(gameObject);
             return;
         }
+
         Instance = this;
+        DontDestroyOnLoad(gameObject); // Persist across scenes
     }
+
 
     private void OnEnable()
     {
@@ -52,7 +59,25 @@ public class LightingManager : MonoBehaviour
             if (TimeOfDay < startHour || TimeOfDay > endHour)
                 TimeOfDay = startHour;
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded; // Listens To Scene Load Events
     }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Stop listening when disabled/destroyed
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (DirectionalLight == null)  // Ensures DirectionalLight resets if needed
+        {
+            DirectionalLight = FindObjectOfType<Light>();
+            if (DirectionalLight != null)
+                Debug.Log($"[LightingManager] Found new directional light in scene: {DirectionalLight.name}");
+        }
+    }
+
 
     private void Update()
     {
