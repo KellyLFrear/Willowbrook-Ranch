@@ -32,11 +32,31 @@ public class LoadScene : MonoBehaviour
         GUIUpdater.Instance.HidePassedOutPopUp();
     }
 
-    // TEMP FUNCTION FOR TESTING
-    public void PrintTempMessage()
+    // FUNCTION TO SHOW CREDITS POPUP PAGE
+    public void ShowCreditsPopUp()
     {
-        Debug.Log("This is a temporary message for testing purposes.");
+        GUIUpdater.Instance.ShowCreditsPopUp(); // Show the credits pop-up
     }
+
+    // FUNCTION TO HIDE CREDITS POPUP PAGE
+    public void HideCreditsPopUp()
+    {
+        GUIUpdater.Instance.HideCreditsPopUp(); // Hide the credits pop-up
+    }
+
+    // FUNCTION TO SHOW MARKET POPUP PAGE
+    public void ShowMarketPopUp()
+    {
+        GUIUpdater.Instance.LoadGeneralStoreGUI(); // Show the market pop-up
+    }
+
+    // FUNCTION TO HIDE MARKET POPUP PAGE
+    public void HideMarketPopUp()
+    {
+        GUIUpdater.Instance.HideGeneralStoreGUI(); // Hide the market pop-up
+    }
+
+
 
     // CALLBACK WHEN FARM SCENE LOADS AFTER PASSING OUT
     private void OnFarmLoadedAfterPassOut(Scene scene, LoadSceneMode mode)
@@ -73,5 +93,23 @@ public class LoadScene : MonoBehaviour
         {
             Debug.LogWarning("Player not found when trying to teleport after pass out.");
         }
+    }
+
+    // FUNCTION TO QUIT GAME
+    public void Quit()
+    {
+        Debug.Log("Quit button pressed!");
+
+        Application.Quit();  // Quit the game (works in a built app)
+
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;  // Stops Play Mode in Editor
+        #endif
+    }
+
+    // TEMPORTARY FUNCTION TO TEST
+    public void TestFunction()
+    {
+        Debug.Log("Buy/Sold Button Was Pressed!");
     }
 }

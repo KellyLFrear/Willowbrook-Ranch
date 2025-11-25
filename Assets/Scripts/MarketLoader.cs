@@ -1,34 +1,35 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MarketLoader : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "GeneralStoreTag") // If The Player Walks Into The "GeneralMarket" Tag
+        if (other.CompareTag("GeneralStoreTag"))
         {
-            Debug.Log("This Would Make The Market Appear!"); // Temporary Debug Log Message
-            Debug.Log("This Would Make The Market Appear!"); // Temporary Debug Log Message
-            Debug.Log("This Would Make The Market Appear!"); // Temporary Debug Log Message
+            if (GUIUpdater.Instance != null)
+            {
+                GUIUpdater.Instance.LoadGeneralStoreGUI();
+            }
+            else
+            {
+                Debug.LogWarning("GUIUpdater.Instance is null – make sure a GUIUpdater is in the scene.");
+            }
         }
 
-        if (other.tag == "FishMarketTag") // If The Player Walks Into The "GeneralMarket" Tag
+        if (other.CompareTag("FishMarketTag"))
         {
-            Debug.Log("This Would Make The Fish Market Appear!"); // Temporary Debug Log Message
-            Debug.Log("This Would Make The Fish Market Appear!"); // Temporary Debug Log Message
-            Debug.Log("This Would Make The Fish Market Appear!"); // Temporary Debug Log Message
+            Debug.Log("This Would Make The Fish Market Appear!");
         }
     }
-  }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("GeneralStoreTag"))
+        {
+            if (GUIUpdater.Instance != null)
+            {
+                GUIUpdater.Instance.HideGeneralStoreGUI(); // hide market popup
+            }
+        }
+    }
+}
