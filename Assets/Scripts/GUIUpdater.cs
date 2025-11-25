@@ -8,6 +8,8 @@ public class GUIUpdater : MonoBehaviour
     [SerializeField] private TMP_Text GUIDayMsg;
 
     public GameObject passedOutPopUpPanel; // Reference to the passed out pop-up panel
+    public GameObject creditsPopUpPanel;   // Reference to the credits pop-up panel
+    public GameObject marketPopUpPanel;    // Reference to the market pop-up panel
 
     public static GUIUpdater Instance { get; private set; }
 
@@ -23,7 +25,7 @@ public class GUIUpdater : MonoBehaviour
 
     void Start()
     {
-        if(GUIClockTimeMsg == null)
+        if (GUIDayMsg == null)
             Debug.LogError("GUIUpdater: GUIDayMsg is not assigned in the Inspector!");
 
         if (GUIClockTimeMsg == null)
@@ -32,8 +34,10 @@ public class GUIUpdater : MonoBehaviour
         if (GUIFundsMsg == null)
             Debug.LogError("GUIUpdater: GUIFundsMsg is not assigned in the Inspector!");
 
-        HidePassedOutPopUp(); // Hides The Passed Out Pop-Up At The Start Of The Game
-
+        // Hide all popups at the start
+        HidePassedOutPopUp();
+        HideCreditsPopUp();
+        HideGeneralStoreGUI();
     }
 
     void Update()
@@ -53,51 +57,78 @@ public class GUIUpdater : MonoBehaviour
         // Updates The Clock GUI
         if (GUIClockTimeMsg != null && LightingManager.Instance != null)
         {
-            int hour24 = LightingManager.Instance.CurrentHour; // Sets The Hour In 24-Hour Format
-            int minute = LightingManager.Instance.CurrentMinute; // Sets The Minute
+            int hour24 = LightingManager.Instance.CurrentHour;
+            int minute = LightingManager.Instance.CurrentMinute;
 
-            hour24 = hour24 % 24; // Ensures Hour Is Within 0-23 Range
+            hour24 = hour24 % 24;
 
             int hour12;
             string suffix;
 
-            if (hour24 == 0) // From 00:00 To 12am
+            if (hour24 == 0)
             {
-                hour12 = 12; // Sets Hour To 12
-                suffix = "am"; // Sets Suffix To "am"
+                hour12 = 12;
+                suffix = "am";
             }
-            else if (hour24 < 12)  // From 01:00 To 11:59
+            else if (hour24 < 12)
             {
-                hour12 = hour24; // Since It's Before Noon, Keeps The Hour Is Same As 24-Hour Format
-                suffix = "am"; // Sets Suffix To "am"
+                hour12 = hour24;
+                suffix = "am";
             }
-            else if (hour24 == 12) // Noon
+            else if (hour24 == 12)
             {
-                hour12 = 12; // Keeps Hour As 12
-                suffix = "pm"; // Sets Suffix To "pm"
+                hour12 = 12;
+                suffix = "pm";
             }
-            else // From 1 To 11:59pm
+            else
             {
-                hour12 = hour24 - 12; // Converts To 12-Hour Format
-                suffix = "pm"; // Sets Suffix To "pm"
+                hour12 = hour24 - 12;
+                suffix = "pm";
             }
 
-            GUIClockTimeMsg.text = $"{hour12:00}:{minute:00}{suffix}"; // Updates The Clock GUI With Formatted Time
+            GUIClockTimeMsg.text = $"{hour12:00}:{minute:00}{suffix}";
         }
     }
 
-
-    // Function Show The Passed Out Pop-Up Window
+    // FUNCTION TO SHOW PASSED OUT POPUP
     public void ShowPassedOutPopUp()
     {
         if (passedOutPopUpPanel != null)
-            passedOutPopUpPanel.SetActive(true); // Shows The Pop-Up Panel That Appears When Passing Out
+            passedOutPopUpPanel.SetActive(true);
     }
 
-    // Function Hide Both Pop-Up Windows
+    // FUNCTION TO HIDE PASSED OUT POPUP
     public void HidePassedOutPopUp()
     {
         if (passedOutPopUpPanel != null)
-            passedOutPopUpPanel.SetActive(false); // Hides The Pop-Up Panel That Appears When Passing Out
+            passedOutPopUpPanel.SetActive(false);
+    }
+
+    // FUNCTION TO SHOW CREDITS POPUP
+    public void ShowCreditsPopUp()
+    {
+        if (creditsPopUpPanel != null)
+            creditsPopUpPanel.SetActive(true);
+    }
+
+    // FUNCTION TO HIDE CREDITS POPUP
+    public void HideCreditsPopUp()
+    {
+        if (creditsPopUpPanel != null)
+            creditsPopUpPanel.SetActive(false);
+    }
+
+    // FUNCTION TO SHOW MARKET GUI
+    public void LoadGeneralStoreGUI()
+    {
+        if (marketPopUpPanel != null)
+            marketPopUpPanel.SetActive(true);
+    }
+
+    // FUNCTION TO HIDE MARKET GUI
+    public void HideGeneralStoreGUI()
+    {
+        if (marketPopUpPanel != null)
+            marketPopUpPanel.SetActive(false);
     }
 }
