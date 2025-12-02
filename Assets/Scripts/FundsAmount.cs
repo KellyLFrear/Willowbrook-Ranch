@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FundsAmount : MonoBehaviour
 {
-    public static FundsAmount Instance;   // Singleton reference
+    public static FundsAmount Instance;   // So We Can Reference The Player's Gold
     public int playerMoney = 50;        // Player Starts Game With 50 Gold
 
     void Awake()

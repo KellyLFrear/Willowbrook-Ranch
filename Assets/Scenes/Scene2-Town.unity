@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 29258169}
   - component: {fileID: 29258168}
   m_Layer: 5
-  m_Name: CarrotsSellTxt
+  m_Name: CarrotsSellBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,9 +655,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298665047}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: TestFunction
+      - m_Target: {fileID: 2010453291}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: SellCarrotCrops
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4235,7 +4235,7 @@ GameObject:
   - component: {fileID: 248937638}
   - component: {fileID: 248937637}
   m_Layer: 5
-  m_Name: EggplantSellTxt
+  m_Name: EggplantSellBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4305,9 +4305,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298665047}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: TestFunction
+      - m_Target: {fileID: 2010453291}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: SellEggplantCrops
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7948,7 +7948,7 @@ GameObject:
   - component: {fileID: 514148607}
   - component: {fileID: 514148606}
   m_Layer: 5
-  m_Name: TomatoSellTxt
+  m_Name: TomatoSellBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8018,9 +8018,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298665047}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: TestFunction
+      - m_Target: {fileID: 2010453291}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: SellTomatoCrops
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9033,7 +9033,7 @@ GameObject:
   - component: {fileID: 555441929}
   - component: {fileID: 555441928}
   m_Layer: 5
-  m_Name: CarrotsBuyTxt
+  m_Name: CarrotsBuyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9103,9 +9103,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298665047}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: TestFunction
+      - m_Target: {fileID: 2010453291}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: BuyCarrotSeeds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12875,7 +12875,7 @@ GameObject:
   - component: {fileID: 807109641}
   - component: {fileID: 807109640}
   m_Layer: 5
-  m_Name: TomatoBuyTxt
+  m_Name: TomatoBuyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12945,9 +12945,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298665047}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: TestFunction
+      - m_Target: {fileID: 2010453291}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: BuyTomatoSeeds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13221,7 +13221,7 @@ GameObject:
   - component: {fileID: 823847359}
   - component: {fileID: 823847358}
   m_Layer: 5
-  m_Name: EggplantBuyTxt
+  m_Name: EggplantBuyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13291,9 +13291,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298665047}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: TestFunction
+      - m_Target: {fileID: 2010453291}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: BuyEggplantSeeds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15703,7 +15703,7 @@ GameObject:
   - component: {fileID: 963369137}
   - component: {fileID: 963369136}
   m_Layer: 5
-  m_Name: MushroomsSellTxt
+  m_Name: MushroomsSellBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15773,9 +15773,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298665047}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: TestFunction
+      - m_Target: {fileID: 2010453291}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: SellMushroomCrops
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29603,7 +29603,7 @@ GameObject:
   - component: {fileID: 1941048594}
   - component: {fileID: 1941048593}
   m_Layer: 5
-  m_Name: MushroomsBuyTxt
+  m_Name: MushroomsBuyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29673,9 +29673,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298665047}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: TestFunction
+      - m_Target: {fileID: 2010453291}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: BuyMushroomSeeds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30951,7 +30951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2010453290}
-  - component: {fileID: 2010453289}
+  - component: {fileID: 2010453291}
   m_Layer: 0
   m_Name: MarketManager
   m_TagString: Untagged
@@ -30959,18 +30959,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2010453289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010453288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b64576ec1112f4abf9417b9b5578b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MarketManager
 --- !u!4 &2010453290
 Transform:
   m_ObjectHideFlags: 0
@@ -30986,6 +30974,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2010453291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010453288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b64576ec1112f4abf9417b9b5578b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarketManager
 --- !u!1001 &2011539554
 PrefabInstance:
   m_ObjectHideFlags: 0
