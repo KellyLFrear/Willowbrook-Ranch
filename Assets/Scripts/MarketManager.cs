@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MarketManager : MonoBehaviour
 {
-    public static FundsAmount Instance; // References The Player's Gold
+    [SerializeField] private FundsAmount funds; // Reference to the FundsAmount script
 
     // SEED PRICES
     [Header("Seed Prices")]
