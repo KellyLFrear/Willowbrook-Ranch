@@ -15633,7 +15633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
   plantingClip: {fileID: 8300000, guid: 3becec1909f194046945d85ac1077772, type: 3}
-  wateringClip: {fileID: 0}
+  wateringClip: {fileID: 8300000, guid: 422ead040b874bb4da14db4d27cfb9bc, type: 3}
   harvestingClip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
   pickingFruitClip: {fileID: 0}
 --- !u!114 &1998568016
