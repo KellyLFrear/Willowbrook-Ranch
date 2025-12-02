@@ -8746,6 +8746,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b9aae5d88d28f4588e45b6c9310eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
+  plantingClip: {fileID: 0}
+  wateringClip: {fileID: 0}
+  harvestingClip: {fileID: 0}
+  pickingFruitClip: {fileID: 0}
 --- !u!114 &554073241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30938,6 +30942,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009393792}
   m_Mesh: {fileID: 4289541822986729655, guid: 9030db395f40f5549af0e24c3a63d241, type: 3}
+--- !u!1 &2010453288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010453290}
+  - component: {fileID: 2010453289}
+  m_Layer: 0
+  m_Name: MarketManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2010453289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010453288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b64576ec1112f4abf9417b9b5578b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarketManager
+--- !u!4 &2010453290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010453288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 394.37183, y: 403.44034, z: -313.16138}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2011539554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33080,3 +33128,4 @@ SceneRoots:
   - {fileID: 676864173}
   - {fileID: 298665048}
   - {fileID: 2107645291}
+  - {fileID: 2010453290}
