@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerPlanting : MonoBehaviour
 {
     [Header("Setup")]
-    public GameObject plantPrefab;
+    public PlantData plantData; // Reference to the PlantData ScriptableObject
     public Camera mainCamera; // Still kept just in case, though we use player position now
     public LayerMask plantableLayer; // IMPORTANT: Assign "PlantableGround" here in Inspector
 
@@ -19,7 +19,7 @@ public class PlayerPlanting : MonoBehaviour
         if (mainCamera == null) mainCamera = Camera.main;
         playerAnimation = GetComponent<PlayerAnimation>();
 
-        if (plantPrefab == null)
+        if (plantData == null)
         {
             Debug.LogError("PlayerPlanting: Missing Plant Prefab!");
         }
@@ -83,7 +83,7 @@ public class PlayerPlanting : MonoBehaviour
             if (tile != null)
             {
                 // attempt to plant
-                if (tile.TryPlant(plantPrefab, hit.point))
+                if (tile.TryPlant(plantData, hit.point))
                 {
                     Debug.Log($"Success! Planted on {tile.name}");
 

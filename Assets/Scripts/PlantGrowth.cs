@@ -8,6 +8,9 @@ public class PlantGrowth : MonoBehaviour
     public GameObject stage2_Growing;//growing stage
     public GameObject stage3_Mature;//mature stage
 
+    [Header("Plant Data")]
+    private PlantData myPlantData;//reference to plant data scriptable object
+
     [Header("State")]
     private bool isWatered = false;//tracks if player watered the plant
     private int currentStage = 1;//sets current stage to sprout
@@ -25,6 +28,13 @@ public class PlantGrowth : MonoBehaviour
     {
         myTile = tile;
     }
+
+    public void Initialize(PlantData data, PlantableTile tile)
+    {
+        myPlantData = data;
+        myTile = tile;
+    }
+
 
     // Public check to see if we are mature
     public bool IsMature()
@@ -52,9 +62,7 @@ public class PlantGrowth : MonoBehaviour
         return true;
     }
 
-    /// <summary>
     /// Executes the daily growth/death logic based on the 'isWatered' state.
-    /// </summary>
     public void AdvanceDay(){
         // 1. Check death of plant (if not watered and currently alive)
         if(!isWatered && currentStage > 0){
@@ -85,8 +93,6 @@ public class PlantGrowth : MonoBehaviour
         ShowStage(currentStage);
         Debug.Log("The plant has died!");
         
-        // OPTIONAL: You might want to remove the plant from the manager here too, 
-        // depending on whether the dead plant stays registered until the player clears it.
     }
     
     // Removed the redundant public void Grow() method. All growth now uses AdvanceDay().

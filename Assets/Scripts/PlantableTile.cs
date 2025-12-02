@@ -14,10 +14,8 @@ public class PlantableTile : MonoBehaviour
         return currentPlant;
     }
 
-    /// <summary>
     /// Attempts to spawn a plant on the tile.
-    /// </summary>
-    public bool TryPlant(GameObject plantPrefab, Vector3 hitPoint)
+    public bool TryPlant(PlantData data, Vector3 hitPoint)
     {
         if (isOccupied)
         {
@@ -25,21 +23,22 @@ public class PlantableTile : MonoBehaviour
             return false;
         }
 
-        if (plantPrefab == null)
+        if (data == null || data.sproutStagePrefab == null)
         {
-            Debug.LogError("[TILE] No plant prefab assigned!");
+            Debug.LogError("[TILE] No plant prefab assigned or plant data!");
             return false;
         }
 
         // Calculate spawn position slightly above the tile surface
         Vector3 spawnPos = transform.position + Vector3.up * 0.1f;
-        GameObject plantObject = Instantiate(plantPrefab, spawnPos, Quaternion.identity);
-
+        //instantiate the plant prefab
+        GameObject plantObject = Instantiate(data.sproutStagePrefab, spawnPos, Quaternion.identity);
         // Get the PlantGrowth script, set its tile reference, and register it
         currentPlant = plantObject.GetComponent<PlantGrowth>();
+        
         if (currentPlant != null)
         {
-            currentPlant.SetTile(this);
+            currentPlant.Initialize(data, this);// Set plant data and tile reference
             
             // Register the new plant with the global manager
             if (PlantManager.Instance != null)
@@ -50,6 +49,8 @@ public class PlantableTile : MonoBehaviour
         else
         {
             Debug.LogError("[TILE] Plant prefab is missing PlantGrowth script!");
+            Destroy(plantObject);// Clean up
+            return false;// Failed to plant
         }
 
         isOccupied = true;
@@ -57,10 +58,9 @@ public class PlantableTile : MonoBehaviour
     }
 
 
-    /// <summary>
+    
     /// Attempts to harvest the plant on the tile.
-    /// </summary>
-    public bool TryHarvest()
+        public bool TryHarvest()
     {
         if (!isOccupied || currentPlant == null)
         {
@@ -79,9 +79,8 @@ public class PlantableTile : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// Clears the tile state after a plant is harvested or destroyed.
-    /// </summary>
     public void ClearTile()
     {
         isOccupied = false;
