@@ -7,9 +7,10 @@ public class GUIUpdater : MonoBehaviour
     [SerializeField] private TMP_Text GUIClockTimeMsg;
     [SerializeField] private TMP_Text GUIDayMsg;
 
-    public GameObject passedOutPopUpPanel; // Reference to the passed out pop-up panel
-    public GameObject creditsPopUpPanel;   // Reference to the credits pop-up panel
-    public GameObject marketPopUpPanel;    // Reference to the market pop-up panel
+    public GameObject passedOutPopUpPanel; // Reference To The Passed Out Pop-Up Panel
+    public GameObject creditsPopUpPanel;   // Reference To The Credits Pop-Up Panel
+    public GameObject marketPopUpPanel;    // Reference To The Market Pop-Up Panel
+    public GameObject fishMarketPopUpPanel; // Reference To The Fish Market Pop-Up Panel
 
     public static GUIUpdater Instance { get; private set; }
 
@@ -38,6 +39,7 @@ public class GUIUpdater : MonoBehaviour
         HidePassedOutPopUp();
         HideCreditsPopUp();
         HideGeneralStoreGUI();
+        HideFishMarketGUI();
     }
 
     void Update()
@@ -130,5 +132,19 @@ public class GUIUpdater : MonoBehaviour
     {
         if (marketPopUpPanel != null)
             marketPopUpPanel.SetActive(false);
+    }
+
+    // FUNCTION TO SHOW FISH MARKET GUI
+    public void LoadFishMarketGUI()
+    {
+        if (fishMarketPopUpPanel != null)
+            fishMarketPopUpPanel.SetActive(true);
+    }
+
+    // FUNCTION TO HIDE FISH MARKET GUI
+    public void HideFishMarketGUI()
+    {
+        if (fishMarketPopUpPanel != null)
+            fishMarketPopUpPanel.SetActive(false);
     }
 }

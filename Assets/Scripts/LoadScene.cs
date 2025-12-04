@@ -56,7 +56,17 @@ public class LoadScene : MonoBehaviour
         GUIUpdater.Instance.HideGeneralStoreGUI(); // Hide the market pop-up
     }
 
+    // FUNCTION TO SHOW FISH MARKET POPUP PAGE
+    public void ShowFishMarketPopUp()
+    {
+        GUIUpdater.Instance.LoadFishMarketGUI(); // Show The Fish Market Pop-Up
+    }
 
+    // FUNCTION TO HIDE FISH MARKET POPUP PAGE
+    public void HideFishMarketPopUp()
+    {
+        GUIUpdater.Instance.HideFishMarketGUI(); // Hides The Fish Market Pop-Up
+    }
 
     // CALLBACK WHEN FARM SCENE LOADS AFTER PASSING OUT
     private void OnFarmLoadedAfterPassOut(Scene scene, LoadSceneMode mode)
@@ -102,9 +112,9 @@ public class LoadScene : MonoBehaviour
 
         Application.Quit();  // Quit the game (works in a built app)
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;  // Stops Play Mode in Editor
-        #endif
+#endif
     }
 
     // TEMPORTARY FUNCTION TO TEST
