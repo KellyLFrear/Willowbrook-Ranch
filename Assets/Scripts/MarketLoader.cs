@@ -18,7 +18,14 @@ public class MarketLoader : MonoBehaviour
 
         if (other.CompareTag("FishMarketTag"))
         {
-            Debug.Log("This Would Make The Fish Market Appear!");
+            if (GUIUpdater.Instance != null)
+            {
+                GUIUpdater.Instance.LoadFishMarketGUI();
+            }
+            else
+            {
+                Debug.LogWarning("GUIUpdater.Instance is null – make sure a GUIUpdater is in the scene.");
+            }
         }
     }
 
@@ -28,7 +35,15 @@ public class MarketLoader : MonoBehaviour
         {
             if (GUIUpdater.Instance != null)
             {
-                GUIUpdater.Instance.HideGeneralStoreGUI(); // hide market popup
+                GUIUpdater.Instance.HideGeneralStoreGUI(); // Hides Market Pop-Up
+            }
+        }
+
+        if (other.CompareTag("FishMarketTag"))
+        {
+            if (GUIUpdater.Instance != null)
+            {
+                GUIUpdater.Instance.HideFishMarketGUI(); // Hides Fish Market Pop-Up
             }
         }
     }
