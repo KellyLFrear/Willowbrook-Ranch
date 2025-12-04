@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MarketManager : MonoBehaviour
 {
-    [SerializeField] private FundsAmount funds; // Reference to the FundsAmount script
+    [SerializeField] private FundsAmount funds; // Reference To The FundsAmount Script
 
     // SEED PRICES
     [Header("Seed Prices")]
@@ -29,7 +29,7 @@ public class MarketManager : MonoBehaviour
     {
         if (funds == null)
         {
-            funds = FundsAmount.Instance; // Finds the FundsAmount instance
+            funds = FundsAmount.Instance; // Finds the FundsAmount Instance
         }
     }
 
@@ -108,7 +108,7 @@ public class MarketManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("No Tomato Crops available to sell.");
+            Debug.Log("No Tomato Crops Available To Sell.");
         }
     }
 

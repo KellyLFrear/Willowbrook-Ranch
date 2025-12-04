@@ -14092,7 +14092,7 @@ GameObject:
   - component: {fileID: 877246628}
   - component: {fileID: 877246627}
   m_Layer: 5
-  m_Name: CreditsCloseButton
+  m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30986,6 +30986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b64576ec1112f4abf9417b9b5578b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MarketManager
+  funds: {fileID: 0}
 --- !u!1001 &2011539554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32451,6 +32452,7 @@ MonoBehaviour:
   passedOutPopUpPanel: {fileID: 1324919472}
   creditsPopUpPanel: {fileID: 0}
   marketPopUpPanel: {fileID: 815300320}
+  fishMarketPopUpPanel: {fileID: 0}
 --- !u!114 &2107645288
 MonoBehaviour:
   m_ObjectHideFlags: 0
