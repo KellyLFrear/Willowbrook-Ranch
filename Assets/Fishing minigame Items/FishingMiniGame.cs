@@ -10,23 +10,43 @@ public class FishingMinigame : MonoBehaviour
     public PlayerMove playerMove;
     public GameObject minigameRoot;
 
-    [Range(0f, 1f)] public float startFill = 0.5f;
-    public float drainPerSecond = 0.2f;
-    public float gainOnCorrect = 0.15f;
-    public float lossOnWrong = 0.1f;
+    [Header("Standard Fish Settings")]
+    [Range(0f, 1f)] public float standardStartFill = 0.5f;
+    public float standardDrainPerSecond = 0.2f;
+    public float standardGainOnCorrect = 0.15f;
+    public float standardLossOnWrong = 0.1f;
+
+    [Header("Hard Fish Settings")]
+    [Range(0f, 1f)] public float hardStartFill = 0.4f;
+    public float hardDrainPerSecond = 0.3f;
+    public float hardGainOnCorrect = 0.1f;
+    public float hardLossOnWrong = 0.12f;
+
+    float startFill;
+    float drainPerSecond;
+    float gainOnCorrect;
+    float lossOnWrong;
 
     float currentFill;
     bool active;
     bool waitingForReplay;
+
     KeyCode currentKey;
+
+    enum FishType { Standard, Hard }
+    FishType currentFishType;
+
     readonly KeyCode[] keys = { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
 
     public void StartMinigame()
     {
+        ChooseRandomFish();
         if (playerMove != null) playerMove.enabled = false;
+
         waitingForReplay = false;
         currentFill = startFill;
         active = true;
+
         NewKey();
         UpdateUI();
     }
@@ -56,10 +76,31 @@ public class FishingMinigame : MonoBehaviour
         UpdateUI();
     }
 
+    void ChooseRandomFish()
+    {
+        if (Random.value < 0.5f)
+        {
+            currentFishType = FishType.Standard;
+            startFill = standardStartFill;
+            drainPerSecond = standardDrainPerSecond;
+            gainOnCorrect = standardGainOnCorrect;
+            lossOnWrong = standardLossOnWrong;
+        }
+        else
+        {
+            currentFishType = FishType.Hard;
+            startFill = hardStartFill;
+            drainPerSecond = hardDrainPerSecond;
+            gainOnCorrect = hardGainOnCorrect;
+            lossOnWrong = hardLossOnWrong;
+        }
+    }
+
     void Check(KeyCode k)
     {
         if (k == currentKey) currentFill += gainOnCorrect;
         else currentFill -= lossOnWrong;
+
         currentFill = Mathf.Clamp01(currentFill);
         if (active) NewKey();
     }
@@ -67,21 +108,34 @@ public class FishingMinigame : MonoBehaviour
     void NewKey()
     {
         currentKey = keys[Random.Range(0, keys.Length)];
-        if (keyPromptText != null) keyPromptText.text = "Press: " + currentKey;
+
+        if (keyPromptText != null)
+        {
+            string fishLabel = currentFishType == FishType.Standard ? "Easy Fish" : "Hard Fish";
+            keyPromptText.text = fishLabel + " | Press: " + currentKey;
+        }
     }
 
     void Win()
     {
         active = false;
-        if (keyPromptText != null) keyPromptText.text = "You Win!";
-        if (playerMove != null) playerMove.enabled = true;
+
+        string fishCaught = currentFishType == FishType.Standard ? "Easy Fish" : "Hard Fish";
+
+        if (keyPromptText != null)
+            keyPromptText.text = "You caught a " + fishCaught + "!";
+
+        if (playerMove != null)
+            playerMove.enabled = true;
     }
 
     void Lose()
     {
         active = false;
         waitingForReplay = true;
-        if (keyPromptText != null) keyPromptText.text = "You lost! Play again? (Y/N)";
+
+        if (keyPromptText != null)
+            keyPromptText.text = "You lost! Play again? (Y/N)";
     }
 
     void RestartGame()
@@ -93,6 +147,7 @@ public class FishingMinigame : MonoBehaviour
     public void ExitGame()
     {
         waitingForReplay = false;
+
         if (playerMove != null) playerMove.enabled = true;
         if (minigameRoot != null) minigameRoot.SetActive(false);
     }
