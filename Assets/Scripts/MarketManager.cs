@@ -25,6 +25,14 @@ public class MarketManager : MonoBehaviour
     private int tempMushroomCropsAmount = 5;
     private int tempCarrotCropsAmount = 5;
 
+    private void Awake()
+    {
+        if (funds == null)
+        {
+            funds = FundsAmount.Instance; // Finds the FundsAmount instance
+        }
+    }
+
 
     // FUNCTION TO BUY TOMATO SEEDS
     public void BuyTomatoSeeds()
@@ -37,6 +45,7 @@ public class MarketManager : MonoBehaviour
             // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
             // InventoryManager.Instance.AddItem("TomatoSeed", 1);
             Debug.Log("Tomato Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
+
         }
 
         else
