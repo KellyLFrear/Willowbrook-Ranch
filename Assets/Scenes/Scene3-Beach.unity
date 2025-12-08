@@ -3166,8 +3166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   rb: {fileID: 376593683}
-  forwardSpeed: 3
-  rotationSpeed: 100
+  forwardSpeed: 60
+  rotationSpeed: 300
   sprintSpeed: 6
   curSpeed: 0
 --- !u!136 &376593682
