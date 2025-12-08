@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b0e2da10e9930c419503a1b2aa7196d, type: 3}
-  m_Name: Carrot_seed
+  m_Name: carrot_crop
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: 
-  displayName: 
-  icon: {fileID: 21300000, guid: 2eabaf9fb5979a14aaafb78a05891402, type: 3}
-  category: 0
+  itemId: carrot_crop
+  displayName: Carrot
+  icon: {fileID: 21300000, guid: 8bc924bdf9eee924d9e1eb1d4a436f45, type: 3}
+  category: 2
   maxStack: 99
