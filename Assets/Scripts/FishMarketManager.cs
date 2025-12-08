@@ -19,26 +19,12 @@ public class FishMarketManager : MonoBehaviour
     private int carpProfit = 15;
     private int largemouthBassProfit = 30;
 
-    // TEMPORARY HARD CODED FISH AMOUNTS FOR SELLING FUNCTION UNTIL INVENTORY IS IMPLEMENTED
-    [Header("Temporary Fish Amounts")]
-    private int tempCarpAmount = 5;
-    private int tempLargemouthBassAmount = 5;
-
     private void Awake()
     {
         if (funds == null)
         {
             funds = FundsAmount.Instance; // Finds the FundsAmount Instance
         }
-    }
-
-    private void Start()
-    {
-        // Add starting fish to inventory (replacing temp amounts)
-        if (carpItem != null)
-            InventoryManager.Instance.AddItem(carpItem, tempCarpAmount);
-        if (largemouthBassItem != null)
-            InventoryManager.Instance.AddItem(largemouthBassItem, tempLargemouthBassAmount);
     }
 
     // FUNCTION TO BUY CARP FOR FOOD

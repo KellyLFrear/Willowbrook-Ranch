@@ -31,13 +31,6 @@ public class MarketManager : MonoBehaviour
     private int mushroomCropProfit = 12;
     private int carrotCropProfit = 30;
 
-    // TEMPORARY HARD CODED CROP AMOUNTS FOR SELLING FUNCTION UNTIL INVENTORY IS IMPLEMENTED
-    [Header("Temporary Crop Amounts")]
-    private int tempTomatoCropsAmount = 5;
-    private int tempEggplantCropsAmount = 5;
-    private int tempMushroomCropsAmount = 5;
-    private int tempCarrotCropsAmount = 5;
-
     private void Awake()
     {
         if (funds == null)
@@ -45,20 +38,6 @@ public class MarketManager : MonoBehaviour
             funds = FundsAmount.Instance; // Finds the FundsAmount instance
         }
     }
-
-    private void Start()
-    {
-        // Add starting crops to inventory (replacing temp amounts)
-        if (tomatoCropItem != null)
-            InventoryManager.Instance.AddItem(tomatoCropItem, tempTomatoCropsAmount);
-        if (eggplantCropItem != null)
-            InventoryManager.Instance.AddItem(eggplantCropItem, tempEggplantCropsAmount);
-        if (mushroomCropItem != null)
-            InventoryManager.Instance.AddItem(mushroomCropItem, tempMushroomCropsAmount);
-        if (carrotCropItem != null)
-            InventoryManager.Instance.AddItem(carrotCropItem, tempCarrotCropsAmount);
-    }
-
 
     // FUNCTION TO BUY TOMATO SEEDS
     public void BuyTomatoSeeds()
