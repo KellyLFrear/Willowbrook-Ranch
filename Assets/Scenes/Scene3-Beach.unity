@@ -3149,6 +3149,10 @@ MonoBehaviour:
   wateringClip: {fileID: 0}
   harvestingClip: {fileID: 0}
   pickingFruitClip: {fileID: 0}
+  plantingVolume: 1
+  wateringVolume: 1
+  harvestingVolume: 1
+  pickingFruitVolume: 1
 --- !u!114 &376593681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4034,6 +4038,7 @@ GameObject:
   - component: {fileID: 494835366}
   - component: {fileID: 494835365}
   - component: {fileID: 494835364}
+  - component: {fileID: 494835367}
   m_Layer: 5
   m_Name: CarpSellBtn
   m_TagString: Untagged
@@ -4155,6 +4160,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494835362}
   m_CullTransparentMesh: 1
+--- !u!114 &494835367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494835362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 4d24975329921423b9c49a8807c8f508, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &518194773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8308,6 +8329,7 @@ GameObject:
   - component: {fileID: 1065055479}
   - component: {fileID: 1065055478}
   - component: {fileID: 1065055477}
+  - component: {fileID: 1065055480}
   m_Layer: 5
   m_Name: CarpBuyBtn
   m_TagString: Untagged
@@ -8429,6 +8451,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065055475}
   m_CullTransparentMesh: 1
+--- !u!114 &1065055480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065055475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 6fede028ba58b48d08e05b2bff883359, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &1074193455
 GameObject:
   m_ObjectHideFlags: 0
@@ -9386,6 +9424,7 @@ GameObject:
   - component: {fileID: 1194901132}
   - component: {fileID: 1194901131}
   - component: {fileID: 1194901130}
+  - component: {fileID: 1194901133}
   m_Layer: 5
   m_Name: LargemouthBassBuyBtn
   m_TagString: Untagged
@@ -9507,6 +9546,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194901128}
   m_CullTransparentMesh: 1
+--- !u!114 &1194901133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194901128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 6fede028ba58b48d08e05b2bff883359, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &1215655181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10306,6 +10361,7 @@ GameObject:
   - component: {fileID: 1355228244}
   - component: {fileID: 1355228243}
   - component: {fileID: 1355228242}
+  - component: {fileID: 1355228245}
   m_Layer: 5
   m_Name: LargemouthBassSellBtn
   m_TagString: Untagged
@@ -10427,6 +10483,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355228240}
   m_CullTransparentMesh: 1
+--- !u!114 &1355228245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355228240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 4d24975329921423b9c49a8807c8f508, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &1356870545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12328,6 +12400,7 @@ GameObject:
   - component: {fileID: 1736939664}
   - component: {fileID: 1736939663}
   - component: {fileID: 1736939662}
+  - component: {fileID: 1736939665}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -12449,6 +12522,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736939660}
   m_CullTransparentMesh: 1
+--- !u!114 &1736939665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736939660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &1742679689
 GameObject:
   m_ObjectHideFlags: 0
@@ -14140,6 +14229,7 @@ GameObject:
   - component: {fileID: 1932430847}
   - component: {fileID: 1932430846}
   - component: {fileID: 1932430845}
+  - component: {fileID: 1932430848}
   m_Layer: 5
   m_Name: PassedOutButton
   m_TagString: Untagged
@@ -14261,6 +14351,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932430843}
   m_CullTransparentMesh: 1
+--- !u!114 &1932430848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932430843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!4 &1944034399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2499189903792055713, guid: d0542ac615ccfb544ad8d2034a592073, type: 3}
