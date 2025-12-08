@@ -32411,6 +32411,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MarketManager
   funds: {fileID: 0}
+  tomatoSeedItem: {fileID: 11400000, guid: 819b529863d3b5f4893f7a617e7e6670, type: 2}
+  eggplantSeedItem: {fileID: 11400000, guid: c6e983a5fb0de27409d3fd31febad27e, type: 2}
+  mushroomSeedItem: {fileID: 11400000, guid: 19a995f1ccc236043b9e169f31d16712, type: 2}
+  carrotSeedItem: {fileID: 11400000, guid: 4cc893cef8a1969489eda6908918059a, type: 2}
 --- !u!1001 &2011539554
 PrefabInstance:
   m_ObjectHideFlags: 0
