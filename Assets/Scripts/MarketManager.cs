@@ -4,6 +4,13 @@ public class MarketManager : MonoBehaviour
 {
     [SerializeField] private FundsAmount funds; // Reference to the FundsAmount script
 
+    // ITEM DATA REFERENCES
+    [Header("Item Data")]
+    [SerializeField] private ItemData tomatoSeedItem;
+    [SerializeField] private ItemData eggplantSeedItem;
+    [SerializeField] private ItemData mushroomSeedItem;
+    [SerializeField] private ItemData carrotSeedItem;
+
     // SEED PRICES
     [Header("Seed Prices")]
     private int tomatoSeedPrice = 15;
@@ -41,15 +48,14 @@ public class MarketManager : MonoBehaviour
 
         if(FundsAmount.Instance.playerMoney >= tomatoSeedPrice) // Check If The Player Has Enough Gold
         {
-            FundsAmount.Instance.playerMoney -= tomatoSeedPrice; // If The Player Has Enough Gold, Deduct The Price
-            // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
-            // InventoryManager.Instance.AddItem("TomatoSeed", 1);
+            FundsAmount.Instance.playerMoney -= tomatoSeedPrice; // Deduct The Price
+            InventoryManager.Instance.AddItem(tomatoSeedItem, 1); // Add to inventory
             Debug.Log("Tomato Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
-
         }
-
         else
+        {
             Debug.Log("Not enough gold to buy Tomato Seeds."); // Insufficient funds
+        }
     }
 
     // FUNCTION TO BUY EGGPLANT SEEDS
@@ -58,13 +64,14 @@ public class MarketManager : MonoBehaviour
         Debug.Log("Attempting to buy Eggplant Seeds for " + eggplantSeedPrice + " gold.");
         if(FundsAmount.Instance.playerMoney >= eggplantSeedPrice) // Check If The Player Has Enough Gold
         {
-            FundsAmount.Instance.playerMoney -= eggplantSeedPrice; // If The Player Has Enough Gold, Deduct The Price
-            // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
-            // InventoryManager.Instance.AddItem("EggplantSeed", 1);
+            FundsAmount.Instance.playerMoney -= eggplantSeedPrice; // Deduct The Price
+            InventoryManager.Instance.AddItem(eggplantSeedItem, 1); // Add to inventory
             Debug.Log("Eggplant Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
         }
         else
+        {
             Debug.Log("Not enough gold to buy Eggplant Seeds."); // Insufficient funds
+        }
     }
 
     // FUNCTION TO BUY MUSHROOM SEEDS
@@ -73,13 +80,14 @@ public class MarketManager : MonoBehaviour
         Debug.Log("Attempting to buy Mushroom Seeds for " + mushroomSeedPrice + " gold.");
         if(FundsAmount.Instance.playerMoney >= mushroomSeedPrice) // Check If The Player Has Enough Gold
         {
-            FundsAmount.Instance.playerMoney -= mushroomSeedPrice; // If The Player Has Enough Gold, Deduct The Price
-            // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
-            // InventoryManager.Instance.AddItem("MushroomSeed", 1);
+            FundsAmount.Instance.playerMoney -= mushroomSeedPrice; // Deduct The Price
+            InventoryManager.Instance.AddItem(mushroomSeedItem, 1); // Add to inventory
             Debug.Log("Mushroom Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
         }
         else
+        {
             Debug.Log("Not enough gold to buy Mushroom Seeds."); // Insufficient funds
+        }
     }
 
     // FUNCTION TO BUY CARROT SEEDS
@@ -88,13 +96,14 @@ public class MarketManager : MonoBehaviour
         Debug.Log("Attempting to buy Carrot Seeds for " + carrotSeedPrice + " gold.");
         if(FundsAmount.Instance.playerMoney >= carrotSeedPrice) // Check If The Player Has Enough Gold
         {
-            FundsAmount.Instance.playerMoney -= carrotSeedPrice; // If The Player Has Enough Gold, Deduct The Price
-            // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
-            // InventoryManager.Instance.AddItem("CarrotSeed", 1);
+            FundsAmount.Instance.playerMoney -= carrotSeedPrice; // Deduct The Price
+            InventoryManager.Instance.AddItem(carrotSeedItem, 1); // Add to inventory
             Debug.Log("Carrot Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
         }
         else
+        {
             Debug.Log("Not enough gold to buy Carrot Seeds."); // Insufficient funds
+        }
     }
 
     // FUNCTION TO SELL TOMATO CROPS
