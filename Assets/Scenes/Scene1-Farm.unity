@@ -2227,17 +2227,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3163453703410976148, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
   m_PrefabInstance: {fileID: 256574657}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &256574659 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 51879326615764111, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
-  m_PrefabInstance: {fileID: 256574657}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f34a30b47b1a8b4cb6efb503cd5ccf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
 --- !u!1001 &258460504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5819,7 +5808,7 @@ RectTransform:
   - {fileID: 1103036222}
   - {fileID: 1195296484}
   - {fileID: 1145427958}
-  m_Father: {fileID: 1189689740}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6392,17 +6381,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3163453703410976148, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
   m_PrefabInstance: {fileID: 900234269}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &900234271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 51879326615764111, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
-  m_PrefabInstance: {fileID: 900234269}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f34a30b47b1a8b4cb6efb503cd5ccf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
 --- !u!1001 &921926211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7902,17 +7880,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3163453703410976148, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
   m_PrefabInstance: {fileID: 1103036221}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1103036223 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 51879326615764111, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
-  m_PrefabInstance: {fileID: 1103036221}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f34a30b47b1a8b4cb6efb503cd5ccf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
 --- !u!1 &1103893937
 GameObject:
   m_ObjectHideFlags: 0
@@ -8449,17 +8416,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3163453703410976148, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
   m_PrefabInstance: {fileID: 1145427957}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1145427959 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 51879326615764111, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
-  m_PrefabInstance: {fileID: 1145427957}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f34a30b47b1a8b4cb6efb503cd5ccf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
 --- !u!1001 &1147515107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8992,7 +8948,6 @@ RectTransform:
   - {fileID: 1335600945}
   - {fileID: 195799879}
   - {fileID: 1709972125}
-  - {fileID: 1189689740}
   - {fileID: 1111221469}
   - {fileID: 1619138883}
   m_Father: {fileID: 0}
@@ -9021,104 +8976,6 @@ MonoBehaviour:
   creditsPopUpPanel: {fileID: 0}
   marketPopUpPanel: {fileID: 0}
   fishMarketPopUpPanel: {fileID: 0}
-  --- !u!1 &1189689739
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1189689740}
-  - component: {fileID: 1189689743}
-  - component: {fileID: 1189689742}
-  - component: {fileID: 1189689741}
-  m_Layer: 5
-  m_Name: HotbarPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1189689740
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189689739}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 819458841}
-  m_Father: {fileID: 1183350982}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 600, y: 600}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1189689741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189689739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9a26ef1a2e4784eb3569dc55b7ddeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotbarUI
-  hotbarSlots:
-  - {fileID: 900234271}
-  - {fileID: 1653739908}
-  - {fileID: 1424182070}
-  - {fileID: 1700495524}
-  - {fileID: 256574659}
-  - {fileID: 1103036223}
-  - {fileID: 1195296485}
-  - {fileID: 1145427959}
---- !u!114 &1189689742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189689739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d67420040c656f04a83716b22e9db0fa, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1189689743
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189689739}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1195296483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9221,17 +9078,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3163453703410976148, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
   m_PrefabInstance: {fileID: 1195296483}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1195296485 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 51879326615764111, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
-  m_PrefabInstance: {fileID: 1195296483}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f34a30b47b1a8b4cb6efb503cd5ccf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
 --- !u!1001 &1198586325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11221,17 +11067,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3163453703410976148, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
   m_PrefabInstance: {fileID: 1424182068}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1424182070 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 51879326615764111, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
-  m_PrefabInstance: {fileID: 1424182068}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f34a30b47b1a8b4cb6efb503cd5ccf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
 --- !u!1 &1424346596
 GameObject:
   m_ObjectHideFlags: 0
@@ -13537,17 +13372,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3163453703410976148, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
   m_PrefabInstance: {fileID: 1653739906}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1653739908 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 51879326615764111, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
-  m_PrefabInstance: {fileID: 1653739906}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f34a30b47b1a8b4cb6efb503cd5ccf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
 --- !u!1001 &1667829536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13891,17 +13715,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3163453703410976148, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
   m_PrefabInstance: {fileID: 1700495522}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1700495524 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 51879326615764111, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
-  m_PrefabInstance: {fileID: 1700495522}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f34a30b47b1a8b4cb6efb503cd5ccf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
 --- !u!1 &1706276258
 GameObject:
   m_ObjectHideFlags: 0
@@ -16990,6 +16803,10 @@ MonoBehaviour:
   wateringClip: {fileID: 8300000, guid: 422ead040b874bb4da14db4d27cfb9bc, type: 3}
   harvestingClip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
   pickingFruitClip: {fileID: 0}
+  plantingVolume: 0.5
+  wateringVolume: 0.25
+  harvestingVolume: 0.5
+  pickingFruitVolume: 1
 --- !u!114 &1998568016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18249,3 +18066,4 @@ SceneRoots:
   - {fileID: 1183350982}
   - {fileID: 1150792434}
   - {fileID: 1103893939}
+  - {fileID: 819458841}

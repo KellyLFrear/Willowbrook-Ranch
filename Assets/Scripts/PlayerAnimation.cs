@@ -13,6 +13,12 @@ public class PlayerAnimation : MonoBehaviour
     public AudioClip harvestingClip;    // Plays when harvesting succeeds
     public AudioClip pickingFruitClip;  // Optional: use if picking fruit is different from planting
 
+    [Header("Action SFX Volume")]
+    [Range(0f, 1f)] public float plantingVolume = 1f;
+    [Range(0f, 1f)] public float wateringVolume = 1f;
+    [Range(0f, 1f)] public float harvestingVolume = 1f;
+    [Range(0f, 1f)] public float pickingFruitVolume = 1f;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -55,11 +61,11 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     // --- Small helper to play sounds safely ---
-    private void PlaySFX(AudioClip clip)
+    private void PlaySFX(AudioClip clip, float volume)
     {
         if (audioSource != null && clip != null)
         {
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, volume);
         }
     }
 
@@ -68,7 +74,7 @@ public class PlayerAnimation : MonoBehaviour
     public void TriggerWatering()
     {
         if (animator) animator.SetTrigger("doWatering");
-        PlaySFX(wateringClip);          // <- plays watering sound
+        PlaySFX(wateringClip, wateringVolume);          // <- plays watering sound
     }
 
     public void TriggerInteract()
@@ -80,7 +86,7 @@ public class PlayerAnimation : MonoBehaviour
     public void TriggerHarvesting()
     {
         if (animator) animator.SetTrigger("isHarvesting");
-        PlaySFX(harvestingClip);        // <- plays harvesting sound
+        PlaySFX(harvestingClip, harvestingVolume);        // <- plays harvesting sound
     }
 
     public void TriggerPickingFruit()
@@ -91,11 +97,11 @@ public class PlayerAnimation : MonoBehaviour
         // So we treat it as a planting sound by default:
         if (pickingFruitClip != null)
         {
-            PlaySFX(pickingFruitClip);  // special sound for picking fruit (if assigned)
+            PlaySFX(pickingFruitClip, pickingFruitVolume);  // special sound for picking fruit (if assigned)
         }
         else
         {
-            PlaySFX(plantingClip);      // otherwise fall back to planting sound
+            PlaySFX(plantingClip, plantingVolume);      // otherwise fall back to planting sound
         }
     }
 }
