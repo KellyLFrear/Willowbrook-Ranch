@@ -5,11 +5,17 @@ public class MarketManager : MonoBehaviour
     [SerializeField] private FundsAmount funds; // Reference to the FundsAmount script
 
     // ITEM DATA REFERENCES
-    [Header("Item Data")]
+    [Header("Seed Item Data")]
     [SerializeField] private ItemData tomatoSeedItem;
     [SerializeField] private ItemData eggplantSeedItem;
     [SerializeField] private ItemData mushroomSeedItem;
     [SerializeField] private ItemData carrotSeedItem;
+
+    [Header("Crop Item Data")]
+    [SerializeField] private ItemData tomatoCropItem;
+    [SerializeField] private ItemData eggplantCropItem;
+    [SerializeField] private ItemData mushroomCropItem;
+    [SerializeField] private ItemData carrotCropItem;
 
     // SEED PRICES
     [Header("Seed Prices")]
@@ -38,6 +44,19 @@ public class MarketManager : MonoBehaviour
         {
             funds = FundsAmount.Instance; // Finds the FundsAmount instance
         }
+    }
+
+    private void Start()
+    {
+        // Add starting crops to inventory (replacing temp amounts)
+        if (tomatoCropItem != null)
+            InventoryManager.Instance.AddItem(tomatoCropItem, tempTomatoCropsAmount);
+        if (eggplantCropItem != null)
+            InventoryManager.Instance.AddItem(eggplantCropItem, tempEggplantCropsAmount);
+        if (mushroomCropItem != null)
+            InventoryManager.Instance.AddItem(mushroomCropItem, tempMushroomCropsAmount);
+        if (carrotCropItem != null)
+            InventoryManager.Instance.AddItem(carrotCropItem, tempCarrotCropsAmount);
     }
 
 
@@ -109,10 +128,18 @@ public class MarketManager : MonoBehaviour
     // FUNCTION TO SELL TOMATO CROPS
     public void SellTomatoCrops()
     {
-        if(tempTomatoCropsAmount > 0)
+        if (tomatoCropItem == null)
+        {
+            Debug.LogError("Tomato Crop ItemData not assigned!");
+            return;
+        }
+
+        // Find the item in inventory
+        int slotIndex = FindItemInInventory(tomatoCropItem);
+        if (slotIndex >= 0)
         {
             Debug.Log("Selling a Tomato Crop.");
-            tempTomatoCropsAmount--; // Subtract One From The Temporary Crop Amount
+            InventoryManager.Instance.RemoveFromSlot(slotIndex, 1); // Remove one from inventory
             FundsAmount.Instance.playerMoney += tomatoCropProfit; // Add The Profit To The Player's Gold
         }
         else
@@ -124,10 +151,18 @@ public class MarketManager : MonoBehaviour
     // FUNCTION TO SELL EGGPLANT CROPS
     public void SellEggplantCrops()
     {
-        if (tempEggplantCropsAmount > 0)
+        if (eggplantCropItem == null)
+        {
+            Debug.LogError("Eggplant Crop ItemData not assigned!");
+            return;
+        }
+
+        // Find the item in inventory
+        int slotIndex = FindItemInInventory(eggplantCropItem);
+        if (slotIndex >= 0)
         {
             Debug.Log("Selling a Eggplant Crop.");
-            tempEggplantCropsAmount--; // Subtract One From The Temporary Crop Amount
+            InventoryManager.Instance.RemoveFromSlot(slotIndex, 1); // Remove one from inventory
             FundsAmount.Instance.playerMoney += eggplantCropProfit; // Add The Profit To The Player's Gold
         }
         else
@@ -139,10 +174,18 @@ public class MarketManager : MonoBehaviour
     // FUNCTION TO SELL MUSHROOMS CROPS
     public void SellMushroomCrops()
     {
-        if (tempMushroomCropsAmount > 0)
+        if (mushroomCropItem == null)
+        {
+            Debug.LogError("Mushroom Crop ItemData not assigned!");
+            return;
+        }
+
+        // Find the item in inventory
+        int slotIndex = FindItemInInventory(mushroomCropItem);
+        if (slotIndex >= 0)
         {
             Debug.Log("Selling a Mushroom Crop.");
-            tempMushroomCropsAmount--; // Subtract One From The Temporary Crop Amount
+            InventoryManager.Instance.RemoveFromSlot(slotIndex, 1); // Remove one from inventory
             FundsAmount.Instance.playerMoney += mushroomCropProfit; // Add The Profit To The Player's Gold
         }
         else
@@ -154,15 +197,37 @@ public class MarketManager : MonoBehaviour
     // FUNCTION TO SELL CARROT CROPS
     public void SellCarrotCrops()
     {
-        if (tempCarrotCropsAmount > 0)
+        if (carrotCropItem == null)
+        {
+            Debug.LogError("Carrot Crop ItemData not assigned!");
+            return;
+        }
+
+        // Find the item in inventory
+        int slotIndex = FindItemInInventory(carrotCropItem);
+        if (slotIndex >= 0)
         {
             Debug.Log("Selling a Carrot Crop.");
-            tempCarrotCropsAmount--; // Subtract One From The Temporary Crop Amount
+            InventoryManager.Instance.RemoveFromSlot(slotIndex, 1); // Remove one from inventory
             FundsAmount.Instance.playerMoney += carrotCropProfit; // Add The Profit To The Player's Gold
         }
         else
         {
             Debug.Log("No Carrot Crops Available To Sell.");
         }
+    }
+
+    // HELPER FUNCTION TO FIND ITEM IN INVENTORY
+    private int FindItemInInventory(ItemData item)
+    {
+        for (int i = 0; i < InventoryManager.Instance.slots.Count; i++)
+        {
+            var slot = InventoryManager.Instance.GetSlot(i);
+            if (slot != null && !slot.IsEmpty && slot.item == item)
+            {
+                return i;
+            }
+        }
+        return -1; // Not found
     }
 }
