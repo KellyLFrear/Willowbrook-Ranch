@@ -6335,6 +6335,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishMarketManager
   funds: {fileID: 0}
+  carpItem: {fileID: 11400000, guid: 19ecf4de4db50d749a0e62dbd66e4099, type: 2}
+  largemouthBassItem: {fileID: 11400000, guid: a074606d9a448d94782c8c0726df8bad, type: 2}
 --- !u!4 &837463445
 Transform:
   m_ObjectHideFlags: 0

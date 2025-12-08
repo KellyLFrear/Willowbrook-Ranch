@@ -32415,6 +32415,10 @@ MonoBehaviour:
   eggplantSeedItem: {fileID: 11400000, guid: c6e983a5fb0de27409d3fd31febad27e, type: 2}
   mushroomSeedItem: {fileID: 11400000, guid: 19a995f1ccc236043b9e169f31d16712, type: 2}
   carrotSeedItem: {fileID: 11400000, guid: 4cc893cef8a1969489eda6908918059a, type: 2}
+  tomatoCropItem: {fileID: 11400000, guid: aa0d7c714958a184c8b86d1d98f63132, type: 2}
+  eggplantCropItem: {fileID: 11400000, guid: 5b46f9bb949767740b5ba4c4b02d4728, type: 2}
+  mushroomCropItem: {fileID: 11400000, guid: 990f14a004b61a947a5b00c2e71f2f6f, type: 2}
+  carrotCropItem: {fileID: 11400000, guid: aeef3018759fe344d89616db14cd5c0a, type: 2}
 --- !u!1001 &2011539554
 PrefabInstance:
   m_ObjectHideFlags: 0
