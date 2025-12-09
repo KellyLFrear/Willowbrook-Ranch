@@ -3246,9 +3246,9 @@ MonoBehaviour:
   castClip: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
   biteClip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
   minigameClip: {fileID: 8300000, guid: 2667a0a008b044e218b63df62e2be749, type: 3}
-  castVolume: 0.8
-  biteVolume: 1
-  minigameVolume: 0.8
+  castVolume: 0.5
+  biteVolume: 0.75
+  minigameVolume: 0.5
 --- !u!114 &376593688
 MonoBehaviour:
   m_ObjectHideFlags: 0
