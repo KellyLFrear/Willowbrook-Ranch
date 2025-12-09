@@ -4,23 +4,30 @@ using TMPro;
 
 public class FishingMinigame : MonoBehaviour
 {
+    [Header("UI References")]
     public Image barFill;
     public TextMeshProUGUI keyPromptText;
     public TextMeshProUGUI percentText;
+
+    [Header("Movement / Player References")]
     public PlayerMove playerMove;
+    public Player player;
     public GameObject minigameRoot;
 
-    [Header("Standard Fish Settings")]
+    [Header("Standard Fish Settings (Carp)")]
     [Range(0f, 1f)] public float standardStartFill = 0.5f;
     public float standardDrainPerSecond = 0.2f;
     public float standardGainOnCorrect = 0.15f;
     public float standardLossOnWrong = 0.1f;
 
-    [Header("Hard Fish Settings")]
+    [Header("Hard Fish Settings (Largemouth Bass)")]
     [Range(0f, 1f)] public float hardStartFill = 0.4f;
     public float hardDrainPerSecond = 0.3f;
     public float hardGainOnCorrect = 0.1f;
     public float hardLossOnWrong = 0.12f;
+
+    [Header("Energy Cost")]
+    public int energyCostToStart = 10;
 
     float startFill;
     float drainPerSecond;
@@ -40,8 +47,20 @@ public class FishingMinigame : MonoBehaviour
 
     public void StartMinigame()
     {
+        if (player != null && !player.HasEnoughEnergy(energyCostToStart))
+        {
+            if (keyPromptText != null)
+                keyPromptText.text = "You are too tired to fish!";
+            return;
+        }
+
+        if (player != null)
+            player.UseEnergy(energyCostToStart);
+
         ChooseRandomFish();
-        if (playerMove != null) playerMove.enabled = false;
+
+        if (playerMove != null)
+            playerMove.enabled = false;
 
         waitingForReplay = false;
         currentFill = startFill;
@@ -98,10 +117,13 @@ public class FishingMinigame : MonoBehaviour
 
     void Check(KeyCode k)
     {
-        if (k == currentKey) currentFill += gainOnCorrect;
-        else currentFill -= lossOnWrong;
+        if (k == currentKey)
+            currentFill += gainOnCorrect;
+        else
+            currentFill -= lossOnWrong;
 
         currentFill = Mathf.Clamp01(currentFill);
+
         if (active) NewKey();
     }
 
@@ -111,7 +133,10 @@ public class FishingMinigame : MonoBehaviour
 
         if (keyPromptText != null)
         {
-            string fishLabel = currentFishType == FishType.Standard ? "Easy Fish" : "Hard Fish";
+            string fishLabel = currentFishType == FishType.Standard
+                ? "Carp"
+                : "Largemouth Bass";
+
             keyPromptText.text = fishLabel + " | Press: " + currentKey;
         }
     }
@@ -120,10 +145,12 @@ public class FishingMinigame : MonoBehaviour
     {
         active = false;
 
-        string fishCaught = currentFishType == FishType.Standard ? "Easy Fish" : "Hard Fish";
+        string fishCaught = currentFishType == FishType.Standard
+            ? "a Carp"
+            : "a Largemouth Bass";
 
         if (keyPromptText != null)
-            keyPromptText.text = "You caught a " + fishCaught + "!";
+            keyPromptText.text = "You caught " + fishCaught + "!";
 
         if (playerMove != null)
             playerMove.enabled = true;
@@ -148,13 +175,19 @@ public class FishingMinigame : MonoBehaviour
     {
         waitingForReplay = false;
 
-        if (playerMove != null) playerMove.enabled = true;
-        if (minigameRoot != null) minigameRoot.SetActive(false);
+        if (playerMove != null)
+            playerMove.enabled = true;
+
+        if (minigameRoot != null)
+            minigameRoot.SetActive(false);
     }
 
     void UpdateUI()
     {
-        if (barFill != null) barFill.fillAmount = currentFill;
-        if (percentText != null) percentText.text = Mathf.RoundToInt(currentFill * 100f) + "%";
+        if (barFill != null)
+            barFill.fillAmount = currentFill;
+
+        if (percentText != null)
+            percentText.text = Mathf.RoundToInt(currentFill * 100f) + "%";
     }
 }

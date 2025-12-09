@@ -1,33 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Energy Settings")]
     public int maxEnergy = 100;
     public int currentEnergy;
 
+    [Header("References")]
     public EnergyBar energybar;
 
     void Start()
     {
         if (energybar == null)
-        {
             energybar = FindObjectOfType<EnergyBar>();
-        }
 
         currentEnergy = maxEnergy;
 
         if (energybar != null)
             energybar.SetMaxEnergy(maxEnergy);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            UseEnergy(5);
-        }
     }
 
     public bool HasEnoughEnergy(int amount)
