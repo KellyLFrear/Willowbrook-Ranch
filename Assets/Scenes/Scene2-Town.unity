@@ -9024,9 +9024,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   rb: {fileID: 0}
-  forwardSpeed: 5
+  forwardSpeed: 4
   rotationSpeed: 300
-  sprintSpeed: 8
+  sprintSpeed: 6
   curSpeed: 0
   SPEED_MODE: 0
   speedModeForwardSpeed: 30
