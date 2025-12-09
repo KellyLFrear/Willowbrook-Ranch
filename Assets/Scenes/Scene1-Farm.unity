@@ -958,6 +958,7 @@ GameObject:
   - component: {fileID: 156747746}
   - component: {fileID: 156747745}
   - component: {fileID: 156747744}
+  - component: {fileID: 156747747}
   m_Layer: 5
   m_Name: PassedOutButton
   m_TagString: Untagged
@@ -1079,6 +1080,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156747742}
   m_CullTransparentMesh: 1
+--- !u!114 &156747747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156747742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &158508921
 GameObject:
   m_ObjectHideFlags: 0
@@ -14252,6 +14269,7 @@ GameObject:
   - component: {fileID: 1727549657}
   - component: {fileID: 1727549656}
   - component: {fileID: 1727549655}
+  - component: {fileID: 1727549658}
   m_Layer: 5
   m_Name: SkipDayButton
   m_TagString: Untagged
@@ -14373,6 +14391,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727549653}
   m_CullTransparentMesh: 1
+--- !u!114 &1727549658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727549653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &1737353139
 PrefabInstance:
   m_ObjectHideFlags: 0

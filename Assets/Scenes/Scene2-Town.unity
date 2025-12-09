@@ -697,6 +697,7 @@ GameObject:
   - component: {fileID: 29258170}
   - component: {fileID: 29258169}
   - component: {fileID: 29258168}
+  - component: {fileID: 29258171}
   m_Layer: 5
   m_Name: CarrotsSellBtn
   m_TagString: Untagged
@@ -818,6 +819,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29258166}
   m_CullTransparentMesh: 1
+--- !u!114 &29258171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29258166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 4d24975329921423b9c49a8807c8f508, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &32147796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4364,6 +4381,7 @@ GameObject:
   - component: {fileID: 248937639}
   - component: {fileID: 248937638}
   - component: {fileID: 248937637}
+  - component: {fileID: 248937640}
   m_Layer: 5
   m_Name: EggplantSellBtn
   m_TagString: Untagged
@@ -4485,6 +4503,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248937635}
   m_CullTransparentMesh: 1
+--- !u!114 &248937640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248937635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 4d24975329921423b9c49a8807c8f508, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &255872693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8077,6 +8111,7 @@ GameObject:
   - component: {fileID: 514148608}
   - component: {fileID: 514148607}
   - component: {fileID: 514148606}
+  - component: {fileID: 514148609}
   m_Layer: 5
   m_Name: TomatoSellBtn
   m_TagString: Untagged
@@ -8198,6 +8233,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514148604}
   m_CullTransparentMesh: 1
+--- !u!114 &514148609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514148604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 4d24975329921423b9c49a8807c8f508, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!4 &517993607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8265484491084957826, guid: b118c748e72b0504897b5a9646c95b47, type: 3}
@@ -9279,6 +9330,7 @@ GameObject:
   - component: {fileID: 555441930}
   - component: {fileID: 555441929}
   - component: {fileID: 555441928}
+  - component: {fileID: 555441931}
   m_Layer: 5
   m_Name: CarrotsBuyBtn
   m_TagString: Untagged
@@ -9400,6 +9452,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555441926}
   m_CullTransparentMesh: 1
+--- !u!114 &555441931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555441926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 6fede028ba58b48d08e05b2bff883359, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &557346688
 GameObject:
   m_ObjectHideFlags: 0
@@ -13246,6 +13314,7 @@ GameObject:
   - component: {fileID: 807109642}
   - component: {fileID: 807109641}
   - component: {fileID: 807109640}
+  - component: {fileID: 807109643}
   m_Layer: 5
   m_Name: TomatoBuyBtn
   m_TagString: Untagged
@@ -13367,6 +13436,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807109638}
   m_CullTransparentMesh: 1
+--- !u!114 &807109643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807109638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 6fede028ba58b48d08e05b2bff883359, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &809227809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13592,6 +13677,7 @@ GameObject:
   - component: {fileID: 823847360}
   - component: {fileID: 823847359}
   - component: {fileID: 823847358}
+  - component: {fileID: 823847361}
   m_Layer: 5
   m_Name: EggplantBuyBtn
   m_TagString: Untagged
@@ -13713,6 +13799,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823847356}
   m_CullTransparentMesh: 1
+--- !u!114 &823847361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823847356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 6fede028ba58b48d08e05b2bff883359, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &825368373
 GameObject:
   m_ObjectHideFlags: 0
@@ -14523,6 +14625,7 @@ GameObject:
   - component: {fileID: 877246629}
   - component: {fileID: 877246628}
   - component: {fileID: 877246627}
+  - component: {fileID: 877246630}
   m_Layer: 5
   m_Name: CreditsCloseButton
   m_TagString: Untagged
@@ -14644,6 +14747,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877246625}
   m_CullTransparentMesh: 1
+--- !u!114 &877246630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877246625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &878424406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16134,6 +16253,7 @@ GameObject:
   - component: {fileID: 963369138}
   - component: {fileID: 963369137}
   - component: {fileID: 963369136}
+  - component: {fileID: 963369139}
   m_Layer: 5
   m_Name: MushroomsSellBtn
   m_TagString: Untagged
@@ -16255,6 +16375,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963369134}
   m_CullTransparentMesh: 1
+--- !u!114 &963369139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963369134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 4d24975329921423b9c49a8807c8f508, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &977967987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24149,6 +24285,7 @@ GameObject:
   - component: {fileID: 1511092466}
   - component: {fileID: 1511092465}
   - component: {fileID: 1511092464}
+  - component: {fileID: 1511092467}
   m_Layer: 5
   m_Name: PassedOutButton
   m_TagString: Untagged
@@ -24270,6 +24407,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511092462}
   m_CullTransparentMesh: 1
+--- !u!114 &1511092467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511092462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &1513522595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30645,6 +30798,7 @@ GameObject:
   - component: {fileID: 1941048595}
   - component: {fileID: 1941048594}
   - component: {fileID: 1941048593}
+  - component: {fileID: 1941048596}
   m_Layer: 5
   m_Name: MushroomsBuyBtn
   m_TagString: Untagged
@@ -30766,6 +30920,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941048591}
   m_CullTransparentMesh: 1
+--- !u!114 &1941048596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941048591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 6fede028ba58b48d08e05b2bff883359, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1001 &1949997091
 PrefabInstance:
   m_ObjectHideFlags: 0

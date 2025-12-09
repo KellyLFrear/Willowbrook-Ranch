@@ -1121,6 +1121,7 @@ MonoBehaviour:
   passedOutPopUpPanel: {fileID: 0}
   creditsPopUpPanel: {fileID: 659521175}
   marketPopUpPanel: {fileID: 0}
+  fishMarketPopUpPanel: {fileID: 0}
 --- !u!4 &867014677
 Transform:
   m_ObjectHideFlags: 0
@@ -1148,6 +1149,7 @@ GameObject:
   - component: {fileID: 880566915}
   - component: {fileID: 880566914}
   - component: {fileID: 880566913}
+  - component: {fileID: 880566916}
   m_Layer: 5
   m_Name: CreditsCloseButton
   m_TagString: Untagged
@@ -1269,6 +1271,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880566911}
   m_CullTransparentMesh: 1
+--- !u!114 &880566916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880566911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &927274478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,6 +1751,148 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993999357}
   m_CullTransparentMesh: 1
+--- !u!1 &1312820273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312820275}
+  - component: {fileID: 1312820274}
+  - component: {fileID: 1312820276}
+  m_Layer: 0
+  m_Name: UIAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1312820274
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312820273}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1312820275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312820273}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312820276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312820273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e40a2dd2067e624cbe2596e7eee3204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIAudioManager
 --- !u!1 &1407646396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,6 +2041,7 @@ GameObject:
   - component: {fileID: 1470531475}
   - component: {fileID: 1470531474}
   - component: {fileID: 1470531473}
+  - component: {fileID: 1470531476}
   m_Layer: 5
   m_Name: StartingButton
   m_TagString: Untagged
@@ -2002,6 +2163,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470531471}
   m_CullTransparentMesh: 1
+--- !u!114 &1470531476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470531471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &1955270144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2191,7 @@ GameObject:
   - component: {fileID: 1955270148}
   - component: {fileID: 1955270147}
   - component: {fileID: 1955270146}
+  - component: {fileID: 1955270149}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -2135,6 +2313,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955270144}
   m_CullTransparentMesh: 1
+--- !u!114 &1955270149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955270144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &1956026196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2283,6 +2477,7 @@ GameObject:
   - component: {fileID: 2079027161}
   - component: {fileID: 2079027160}
   - component: {fileID: 2079027159}
+  - component: {fileID: 2079027162}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -2404,6 +2599,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079027157}
   m_CullTransparentMesh: 1
+--- !u!114 &2079027162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079027157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317a44e7bf8a91c4693f013e44ae08d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  hoverClip: {fileID: 8300000, guid: 1916972b0254443a2ac996968e38335c, type: 3}
+  clickClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  hoverVolume: 0.6
+  clickVolume: 1
 --- !u!1 &2079419903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,3 +2762,4 @@ SceneRoots:
   - {fileID: 974564489}
   - {fileID: 867014677}
   - {fileID: 379493348}
+  - {fileID: 1312820275}
