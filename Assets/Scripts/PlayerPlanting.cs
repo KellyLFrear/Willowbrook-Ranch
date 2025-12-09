@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerPlanting : MonoBehaviour
 {
     [Header("Setup")]
-    public GameObject plantPrefab;
+    // public GameObject plantPrefab; THIS CAN BE IGNORED
     public Camera mainCamera; // Still kept just in case, though we use player position now
     public LayerMask plantableLayer; // IMPORTANT: Assign "PlantableGround" here in Inspector
 
@@ -18,12 +18,12 @@ public class PlayerPlanting : MonoBehaviour
         // Safety checks to prevent errors if things aren't assigned
         if (mainCamera == null) mainCamera = Camera.main;
         playerAnimation = GetComponent<PlayerAnimation>();
-
+        /*
         if (plantPrefab == null)
         {
             Debug.LogError("PlayerPlanting: Missing Plant Prefab!");
         }
-
+        */
     }
 
     void Update()
@@ -72,22 +72,40 @@ public class PlayerPlanting : MonoBehaviour
 
     public void TryPlant()
     {
-        // create a ray starting at the player's center (slightly up) pointing straight DOWN
+        // 1. Get the currently selected item (Placeholder: Assumes slot 0 is the active item)
+        // You MUST implement GetCurrentHeldItem() in InventoryManager for this line to work.
+        InventorySlot activeSlot = InventoryManager.Instance.GetSlot(0); 
+        
+        if (activeSlot == null || activeSlot.IsEmpty || activeSlot.item.category != ItemCategory.Seed)
+        {
+            Debug.Log("TryPlant: Player is not holding a seed item.");
+            return;
+        }
+
+        ItemData seedItem = activeSlot.item;
+        GameObject plantToSpawn = seedItem.plantPrefab;
+
+        if (plantToSpawn == null)
+        {
+            Debug.LogError($"TryPlant: Seed item '{seedItem.displayName}' is missing a Plant Prefab reference!");
+            return;
+        }
+        // 2. Raycast to find the tile 
         Ray ray = new Ray(transform.position + Vector3.up, Vector3.down);
 
-        // cast the ray. Note: We only hit objects on the 'plantableLayer'
         if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, plantableLayer))
         {
-            // check if the object we hit has the script
             PlantableTile tile = hit.collider.GetComponent<PlantableTile>();
             if (tile != null)
             {
-                // attempt to plant
-                if (tile.TryPlant(plantPrefab, hit.point))
+                // 3. Attempt to plant with the specific prefab from the ItemData
+                if (tile.TryPlant(plantToSpawn, hit.point))
                 {
-                    Debug.Log($"Success! Planted on {tile.name}");
+                    Debug.Log($"Success! Planted {seedItem.displayName} on {tile.name}");
 
-                    // Trigger animation if it exists
+                    // 4. Consume the seed from the inventory
+                    InventoryManager.Instance.RemoveFromSlot(0, 1); // Remove 1 from the active slot
+
                     if (playerAnimation != null) playerAnimation.TriggerPickingFruit();
                 }
                 else

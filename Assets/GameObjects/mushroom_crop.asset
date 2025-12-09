@@ -17,3 +17,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 40cb7bc0c13d4be4989b01bce42b9601, type: 3}
   category: 2
   maxStack: 99
+  plantPrefab: {fileID: 7178120599621184333, guid: 75bd202cc0937b4468644fdb8089973d, type: 3}
+  cropResultItem: {fileID: 11400000}

@@ -13,14 +13,16 @@ public class StartingInventory : MonoBehaviour
 
     [Header("Starting Seeds")]
     [SerializeField] private ItemData tomatoSeeds;
-    [SerializeField] private int tomatoSeedsAmount = 5;
+    [SerializeField] private int tomatoSeedsAmount = 1;
     [SerializeField] private ItemData eggplantSeeds;
-    [SerializeField] private int eggplantSeedsAmount = 5;
+    [SerializeField] private int eggplantSeedsAmount = 1;
     [SerializeField] private ItemData mushroomSeeds;
-    [SerializeField] private int mushroomSeedsAmount = 5;
+    [SerializeField] private int mushroomSeedsAmount = 1;
     [SerializeField] private ItemData carrotSeeds;
-    [SerializeField] private int carrotSeedsAmount = 5;
+    [SerializeField] private int carrotSeedsAmount = 1;
 
+    //COMMENTING THESE OUT SO THE PLAYER ONLY STARTS WITH SEEDS!!!!!
+    /*
     [Header("Starting Crops")]
     [SerializeField] private ItemData tomatoCrop;
     [SerializeField] private int tomatoCropAmount = 5;
@@ -36,7 +38,8 @@ public class StartingInventory : MonoBehaviour
     [SerializeField] private int carpAmount = 5;
     [SerializeField] private ItemData largemouthBass;
     [SerializeField] private int largemouthBassAmount = 5;
-
+    */
+    
     [Header("Starting Tools")]
     [SerializeField] private ItemData wateringCan;
     [SerializeField] private int wateringCanAmount = 1;
@@ -71,7 +74,8 @@ public class StartingInventory : MonoBehaviour
         AddItemIfNotNull(eggplantSeeds, eggplantSeedsAmount, "Eggplant Seeds");
         AddItemIfNotNull(mushroomSeeds, mushroomSeedsAmount, "Mushroom Seeds");
         AddItemIfNotNull(carrotSeeds, carrotSeedsAmount, "Carrot Seeds");
-
+        
+        /*
         // Add starting crops
         AddItemIfNotNull(tomatoCrop, tomatoCropAmount, "Tomato");
         AddItemIfNotNull(eggplantCrop, eggplantCropAmount, "Eggplant");
@@ -81,6 +85,7 @@ public class StartingInventory : MonoBehaviour
         // Add starting fish
         AddItemIfNotNull(carp, carpAmount, "Carp");
         AddItemIfNotNull(largemouthBass, largemouthBassAmount, "Largemouth Bass");
+        */
 
         // Add starting tools
         AddItemIfNotNull(wateringCan, wateringCanAmount, "Watering Can");
