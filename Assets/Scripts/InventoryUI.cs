@@ -4,6 +4,7 @@ public class InventoryUI : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject inventoryPanel;   // InventoryPanel object
+    public GameObject hotbarPanel;      // HotbarPanel to toggle with inventory
     public Transform slotsParent;       // SlotsParent under panel
     public InventorySlotUI slotPrefab;  // SlotUI (or InventorySlotUI) prefab
 
@@ -28,8 +29,10 @@ public class InventoryUI : MonoBehaviour
 
         inv.OnInventoryChanged += RefreshAll;
 
-        // Hide panel at runtime start
+        // Hide inventory panel, show hotbar at runtime start
         inventoryPanel.SetActive(false);
+        if (hotbarPanel != null)
+            hotbarPanel.SetActive(true);
         isOpen = false;
     }
 
@@ -45,6 +48,10 @@ public class InventoryUI : MonoBehaviour
         {
             isOpen = !isOpen;
             inventoryPanel.SetActive(isOpen);
+            
+            // Toggle hotbar opposite to inventory
+            if (hotbarPanel != null)
+                hotbarPanel.SetActive(!isOpen);
 
             if (isOpen)
                 RefreshAll();
