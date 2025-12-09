@@ -8,7 +8,7 @@ public class HotbarUI : MonoBehaviour
     {
         var inv = InventoryManager.Instance;
 
-        // Link UI slots to inventory indices 0�7
+        // Link UI slots to inventory indices 0–7
         for (int i = 0; i < hotbarSlots.Length; i++)
         {
             hotbarSlots[i].SetSlotIndex(i);
