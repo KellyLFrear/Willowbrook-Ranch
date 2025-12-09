@@ -3166,11 +3166,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   rb: {fileID: 376593683}
-  forwardSpeed: 60
+  forwardSpeed: 5
   rotationSpeed: 300
-  sprintSpeed: 6
+  sprintSpeed: 8
   curSpeed: 0
-  SPEED_MODE: 1
+  SPEED_MODE: 0
   speedModeForwardSpeed: 30
   speedModeRotationSpeed: 280
   groundingForce: 100
@@ -12636,6 +12636,7 @@ MonoBehaviour:
   keyPromptText: {fileID: 245591170}
   percentText: {fileID: 1772630224}
   playerMove: {fileID: 376593681}
+  player: {fileID: 0}
   minigameRoot: {fileID: 0}
   carpItem: {fileID: 11400000, guid: 19ecf4de4db50d749a0e62dbd66e4099, type: 2}
   largemouthBassItem: {fileID: 11400000, guid: a074606d9a448d94782c8c0726df8bad, type: 2}
