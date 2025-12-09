@@ -13166,7 +13166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
   inventoryPanel: {fileID: 1111221468}
-  hotbarPanel: {fileID: 0}
+  hotbarPanel: {fileID: 1036883667}
   slotsParent: {fileID: 214938779}
   slotPrefab: {fileID: 8534936574458927844, guid: 45ea2fdd917164e4ab1868f48571dbc5, type: 3}
 --- !u!1001 &1623895549
@@ -16959,8 +16959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   rb: {fileID: 0}
-  forwardSpeed: 60
-  rotationSpeed: 300
+  forwardSpeed: 3
+  rotationSpeed: 100
   sprintSpeed: 6
   curSpeed: 0
 --- !u!136 &1998568017
