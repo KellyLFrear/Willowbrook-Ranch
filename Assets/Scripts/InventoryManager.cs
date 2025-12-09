@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance { get; private set; }
 
     [Header("Sizes")]
-    public int totalSlots = 24;   // 3 rows × 8 columns
+    public int totalSlots = 24;   // 3 rows ï¿½ 8 columns
     public int hotbarSize = 8;    // first 8 are hotbar
 
     [Header("Slots")]
