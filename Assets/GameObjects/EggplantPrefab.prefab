@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6317064646207674514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8234038332176970627}
+  - component: {fileID: 4770973897046544423}
+  m_Layer: 0
+  m_Name: EggplantPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8234038332176970627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317064646207674514}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.39603, y: 0, z: 85.89441}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4770973897046544423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317064646207674514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34d80a36cc9a92479218025334a0169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlantGrowth
+  stage0_Dead: {fileID: 919132149155446097, guid: 13ebd6857ed4d1b44928aed077376384, type: 3}
+  stage1_Sprout: {fileID: 8343277342855816451, guid: a246d5a1b8aa2eb4992fa11a37ac3036, type: 3}
+  stage2_Growing: {fileID: 8166081803906564882, guid: 16b29f64199af1140880ceac58f3542a, type: 3}
+  stage3_Mature: {fileID: 7446319960361760282, guid: 9880ebc31db7bf140876ae4e9d0e9fc1, type: 3}
+  harvestItemData: {fileID: 0}
+  harvestAmount: 1

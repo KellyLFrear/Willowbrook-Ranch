@@ -44,6 +44,9 @@ public class InventoryManager : MonoBehaviour
         return slots[index];
     }
 
+    //get the slot for the current item being held (assumes hotbar index 0)
+    public InventorySlot GetCurrentHeldItem(){ return GetSlot(0); }
+
     public bool AddItem(ItemData item, int amount = 1)
     {
         if (item == null || amount <= 0) return false;

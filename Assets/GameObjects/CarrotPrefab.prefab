@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7345140200318380437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7702625799750730870}
+  - component: {fileID: 6621889577672638484}
+  m_Layer: 0
+  m_Name: CarrotPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7702625799750730870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345140200318380437}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.39603, y: 0, z: 85.89441}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6621889577672638484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345140200318380437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34d80a36cc9a92479218025334a0169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlantGrowth
+  stage0_Dead: {fileID: 919132149155446097, guid: 472990a660e39184e9123d59fa7e7c1e, type: 3}
+  stage1_Sprout: {fileID: 8928344383136226129, guid: 855c6c01e6244c74ba3976b79c7104c9, type: 3}
+  stage2_Growing: {fileID: 8720972299187697165, guid: 25bcf8ff2dca5a64d893a9a6ed8b782d, type: 3}
+  stage3_Mature: {fileID: 1354996048308653523, guid: da30c56b3f093764d9d473da3bb794ef, type: 3}
+  harvestItemData: {fileID: 11400000, guid: aeef3018759fe344d89616db14cd5c0a, type: 2}
+  harvestAmount: 1

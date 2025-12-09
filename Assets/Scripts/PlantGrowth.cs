@@ -13,6 +13,10 @@ public class PlantGrowth : MonoBehaviour
     private int currentStage = 1;//sets current stage to sprout
     private PlantableTile myTile; //reference back to the tile we are planted on
 
+    [Header("Harvest Reward")]
+    public ItemData harvestItemData; //item data for resulting crop
+    public int harvestAmount = 1; //amount of crop to give on harvest
+    
     void Start()
     {
         // ensures dead plant stage is inactive when starting
@@ -120,12 +124,29 @@ public class PlantGrowth : MonoBehaviour
     // Called by the PlantableTile
     public void Harvest()
     {
-        //must be mature to harvest
+  //must be mature to harvest
         if (currentStage != 3)
         {
             Debug.Log("The plant isn't mature!");
             return;
         }
+        
+        //harvest logic
+        if (harvestItemData != null)
+        {
+            // Add the crop to the player's inventory
+            bool added = InventoryManager.Instance.AddItem(harvestItemData, harvestAmount);
+            if (!added)
+            {
+                Debug.LogWarning($"Harvested, but failed to add all {harvestItemData.displayName} to inventory (Inventory Full).");
+                // You might want to drop the item on the ground here instead
+            }
+        }
+        else
+        {
+            Debug.LogError("Harvest Item Data is missing from PlantGrowth script!");
+        }
+        
         Debug.Log("Harvested the plant!");
         
         //clean up tile, remove from the manager, destroy object
