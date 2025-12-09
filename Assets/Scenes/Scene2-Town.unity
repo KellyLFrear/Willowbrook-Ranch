@@ -17090,6 +17090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
   inventoryPanel: {fileID: 1468430613}
+  hotbarPanel: {fileID: 0}
   slotsParent: {fileID: 863567482}
   slotPrefab: {fileID: 8534936574458927844, guid: 45ea2fdd917164e4ab1868f48571dbc5, type: 3}
 --- !u!1001 &1023490877
