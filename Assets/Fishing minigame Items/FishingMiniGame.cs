@@ -14,7 +14,11 @@ public class FishingMinigame : MonoBehaviour
     public Player player;
     public GameObject minigameRoot;
 
-    [Header("Standard Fish Settings (Carp)")]
+    [Header("Fish Item Data")]
+    [SerializeField] private ItemData carpItem; // Easy fish
+    [SerializeField] private ItemData largemouthBassItem; // Hard fish
+
+    [Header("Standard Fish Settings")]
     [Range(0f, 1f)] public float standardStartFill = 0.5f;
     public float standardDrainPerSecond = 0.2f;
     public float standardGainOnCorrect = 0.15f;
@@ -145,12 +149,27 @@ public class FishingMinigame : MonoBehaviour
     {
         active = false;
 
-        string fishCaught = currentFishType == FishType.Standard
-            ? "a Carp"
-            : "a Largemouth Bass";
+        // Determine which fish was caught
+        bool isStandard = currentFishType == FishType.Standard;
+        ItemData caughtFish = isStandard ? carpItem : largemouthBassItem;
+        string fishName = isStandard ? "Carp" : "Largemouth Bass";
+
+        // Add fish to inventory
+        if (caughtFish != null)
+        {
+            if (!InventoryManager.Instance.AddItem(caughtFish, 1))
+            {
+                Debug.LogWarning("Inventory full! Could not add " + fishName);
+                fishName += " (Inventory Full!)";
+            }
+        }
+        else
+        {
+            Debug.LogError("Fish ItemData not assigned in FishingMinigame!");
+        }
 
         if (keyPromptText != null)
-            keyPromptText.text = "You caught " + fishCaught + "!";
+            keyPromptText.text = "You caught a " + fishName + "!";
 
         if (playerMove != null)
             playerMove.enabled = true;
