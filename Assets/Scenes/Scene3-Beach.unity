@@ -3170,6 +3170,14 @@ MonoBehaviour:
   rotationSpeed: 300
   sprintSpeed: 6
   curSpeed: 0
+  SPEED_MODE: 1
+  speedModeForwardSpeed: 30
+  speedModeRotationSpeed: 280
+  groundingForce: 100
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  groundCheckDistance: 25
 --- !u!136 &376593682
 CapsuleCollider:
   m_ObjectHideFlags: 0
