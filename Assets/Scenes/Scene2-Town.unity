@@ -9024,11 +9024,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   rb: {fileID: 0}
-  forwardSpeed: 60
+  forwardSpeed: 5
   rotationSpeed: 300
-  sprintSpeed: 6
+  sprintSpeed: 8
   curSpeed: 0
-  SPEED_MODE: 1
+  SPEED_MODE: 0
   speedModeForwardSpeed: 30
   speedModeRotationSpeed: 280
   groundingForce: 100
@@ -33792,6 +33792,10 @@ PrefabInstance:
     - target: {fileID: 7396542521997061076, guid: 90dd2ca6ace49314db5e3309437303b4, type: 3}
       propertyPath: advanceVolume
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396542521997061076, guid: 90dd2ca6ace49314db5e3309437303b4, type: 3}
+      propertyPath: charsPerTypeSound
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9146784975874175801, guid: 90dd2ca6ace49314db5e3309437303b4, type: 3}
       propertyPath: m_Name
