@@ -3389,6 +3389,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &376593694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376593679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771cc3e92f41942d9a92be9ef824f163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  maxEnergy: 100
+  currentEnergy: 0
+  energybar: {fileID: 1241033531}
 --- !u!1 &380333212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3735,7 +3750,7 @@ RectTransform:
   m_GameObject: {fileID: 449502594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1742679690}
@@ -3765,7 +3780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: affba478984df4049bbae3879223a1b0, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9744,6 +9759,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1890699930516694794, guid: 37f26c52f17574a77a4db87fa939defd, type: 3}
   m_PrefabInstance: {fileID: 373052751}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1241033531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7764681746282332013, guid: 37f26c52f17574a77a4db87fa939defd, type: 3}
+  m_PrefabInstance: {fileID: 373052751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 854a52c23d25d48ac885413f47605784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1243411740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12593,7 +12619,8 @@ MonoBehaviour:
   keyPromptText: {fileID: 245591170}
   percentText: {fileID: 1772630224}
   playerMove: {fileID: 376593681}
-  minigameRoot: {fileID: 0}
+  player: {fileID: 376593694}
+  minigameRoot: {fileID: 1742679689}
   standardStartFill: 0.5
   standardDrainPerSecond: 0.2
   standardGainOnCorrect: 0.15
@@ -12602,6 +12629,7 @@ MonoBehaviour:
   hardDrainPerSecond: 0.5
   hardGainOnCorrect: 0.25
   hardLossOnWrong: 1
+  energyCostToStart: 10
 --- !u!1001 &1746879311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13600,6 +13628,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3967108684766030035, guid: 1c8950e890f8de640b645d9ccc90ffa4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 376593691}
+    - targetCorrespondingSourceObject: {fileID: 3967108684766030035, guid: 1c8950e890f8de640b645d9ccc90ffa4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 376593694}
   m_SourcePrefab: {fileID: 100100000, guid: 1c8950e890f8de640b645d9ccc90ffa4, type: 3}
 --- !u!1001 &1848856133
 PrefabInstance:
