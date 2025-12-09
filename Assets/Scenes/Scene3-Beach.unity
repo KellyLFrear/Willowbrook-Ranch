@@ -3166,10 +3166,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   rb: {fileID: 376593683}
-  forwardSpeed: 3
-  rotationSpeed: 100
+  forwardSpeed: 60
+  rotationSpeed: 300
   sprintSpeed: 6
   curSpeed: 0
+  SPEED_MODE: 1
+  speedModeForwardSpeed: 30
+  speedModeRotationSpeed: 280
+  groundingForce: 100
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  groundCheckDistance: 25
 --- !u!136 &376593682
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6335,6 +6343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishMarketManager
   funds: {fileID: 0}
+  carpItem: {fileID: 11400000, guid: 19ecf4de4db50d749a0e62dbd66e4099, type: 2}
+  largemouthBassItem: {fileID: 11400000, guid: a074606d9a448d94782c8c0726df8bad, type: 2}
 --- !u!4 &837463445
 Transform:
   m_ObjectHideFlags: 0
@@ -6629,6 +6639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
   inventoryPanel: {fileID: 2051650225}
+  hotbarPanel: {fileID: 0}
   slotsParent: {fileID: 1522577738}
   slotPrefab: {fileID: 8534936574458927844, guid: 45ea2fdd917164e4ab1868f48571dbc5, type: 3}
 --- !u!1001 &905276197
@@ -12625,8 +12636,9 @@ MonoBehaviour:
   keyPromptText: {fileID: 245591170}
   percentText: {fileID: 1772630224}
   playerMove: {fileID: 376593681}
-  player: {fileID: 376593694}
-  minigameRoot: {fileID: 1742679689}
+  minigameRoot: {fileID: 0}
+  carpItem: {fileID: 11400000, guid: 19ecf4de4db50d749a0e62dbd66e4099, type: 2}
+  largemouthBassItem: {fileID: 11400000, guid: a074606d9a448d94782c8c0726df8bad, type: 2}
   standardStartFill: 0.5
   standardDrainPerSecond: 0.2
   standardGainOnCorrect: 0.15

@@ -9024,10 +9024,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   rb: {fileID: 0}
-  forwardSpeed: 3
-  rotationSpeed: 100
+  forwardSpeed: 60
+  rotationSpeed: 300
   sprintSpeed: 6
   curSpeed: 0
+  SPEED_MODE: 1
+  speedModeForwardSpeed: 30
+  speedModeRotationSpeed: 280
+  groundingForce: 100
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  groundCheckDistance: 0.25
 --- !u!114 &554073240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17082,6 +17090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
   inventoryPanel: {fileID: 1468430613}
+  hotbarPanel: {fileID: 0}
   slotsParent: {fileID: 863567482}
   slotPrefab: {fileID: 8534936574458927844, guid: 45ea2fdd917164e4ab1868f48571dbc5, type: 3}
 --- !u!1001 &1023490877
@@ -32411,6 +32420,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MarketManager
   funds: {fileID: 0}
+  tomatoSeedItem: {fileID: 11400000, guid: 819b529863d3b5f4893f7a617e7e6670, type: 2}
+  eggplantSeedItem: {fileID: 11400000, guid: c6e983a5fb0de27409d3fd31febad27e, type: 2}
+  mushroomSeedItem: {fileID: 11400000, guid: 19a995f1ccc236043b9e169f31d16712, type: 2}
+  carrotSeedItem: {fileID: 11400000, guid: 4cc893cef8a1969489eda6908918059a, type: 2}
+  tomatoCropItem: {fileID: 11400000, guid: aa0d7c714958a184c8b86d1d98f63132, type: 2}
+  eggplantCropItem: {fileID: 11400000, guid: 5b46f9bb949767740b5ba4c4b02d4728, type: 2}
+  mushroomCropItem: {fileID: 11400000, guid: 990f14a004b61a947a5b00c2e71f2f6f, type: 2}
+  carrotCropItem: {fileID: 11400000, guid: aeef3018759fe344d89616db14cd5c0a, type: 2}
 --- !u!1001 &2011539554
 PrefabInstance:
   m_ObjectHideFlags: 0

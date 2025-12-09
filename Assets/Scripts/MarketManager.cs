@@ -4,6 +4,19 @@ public class MarketManager : MonoBehaviour
 {
     [SerializeField] private FundsAmount funds; // Reference to the FundsAmount script
 
+    // ITEM DATA REFERENCES
+    [Header("Seed Item Data")]
+    [SerializeField] private ItemData tomatoSeedItem;
+    [SerializeField] private ItemData eggplantSeedItem;
+    [SerializeField] private ItemData mushroomSeedItem;
+    [SerializeField] private ItemData carrotSeedItem;
+
+    [Header("Crop Item Data")]
+    [SerializeField] private ItemData tomatoCropItem;
+    [SerializeField] private ItemData eggplantCropItem;
+    [SerializeField] private ItemData mushroomCropItem;
+    [SerializeField] private ItemData carrotCropItem;
+
     // SEED PRICES
     [Header("Seed Prices")]
     private int tomatoSeedPrice = 15;
@@ -18,13 +31,6 @@ public class MarketManager : MonoBehaviour
     private int mushroomCropProfit = 12;
     private int carrotCropProfit = 30;
 
-    // TEMPORARY HARD CODED CROP AMOUNTS FOR SELLING FUNCTION UNTIL INVENTORY IS IMPLEMENTED
-    [Header("Temporary Crop Amounts")]
-    private int tempTomatoCropsAmount = 5;
-    private int tempEggplantCropsAmount = 5;
-    private int tempMushroomCropsAmount = 5;
-    private int tempCarrotCropsAmount = 5;
-
     private void Awake()
     {
         if (funds == null)
@@ -33,7 +39,6 @@ public class MarketManager : MonoBehaviour
         }
     }
 
-
     // FUNCTION TO BUY TOMATO SEEDS
     public void BuyTomatoSeeds()
     {
@@ -41,15 +46,14 @@ public class MarketManager : MonoBehaviour
 
         if(FundsAmount.Instance.playerMoney >= tomatoSeedPrice) // Check If The Player Has Enough Gold
         {
-            FundsAmount.Instance.playerMoney -= tomatoSeedPrice; // If The Player Has Enough Gold, Deduct The Price
-            // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
-            // InventoryManager.Instance.AddItem("TomatoSeed", 1);
+            FundsAmount.Instance.playerMoney -= tomatoSeedPrice; // Deduct The Price
+            InventoryManager.Instance.AddItem(tomatoSeedItem, 1); // Add to inventory
             Debug.Log("Tomato Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
-
         }
-
         else
+        {
             Debug.Log("Not enough gold to buy Tomato Seeds."); // Insufficient funds
+        }
     }
 
     // FUNCTION TO BUY EGGPLANT SEEDS
@@ -58,13 +62,14 @@ public class MarketManager : MonoBehaviour
         Debug.Log("Attempting to buy Eggplant Seeds for " + eggplantSeedPrice + " gold.");
         if(FundsAmount.Instance.playerMoney >= eggplantSeedPrice) // Check If The Player Has Enough Gold
         {
-            FundsAmount.Instance.playerMoney -= eggplantSeedPrice; // If The Player Has Enough Gold, Deduct The Price
-            // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
-            // InventoryManager.Instance.AddItem("EggplantSeed", 1);
+            FundsAmount.Instance.playerMoney -= eggplantSeedPrice; // Deduct The Price
+            InventoryManager.Instance.AddItem(eggplantSeedItem, 1); // Add to inventory
             Debug.Log("Eggplant Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
         }
         else
+        {
             Debug.Log("Not enough gold to buy Eggplant Seeds."); // Insufficient funds
+        }
     }
 
     // FUNCTION TO BUY MUSHROOM SEEDS
@@ -73,13 +78,14 @@ public class MarketManager : MonoBehaviour
         Debug.Log("Attempting to buy Mushroom Seeds for " + mushroomSeedPrice + " gold.");
         if(FundsAmount.Instance.playerMoney >= mushroomSeedPrice) // Check If The Player Has Enough Gold
         {
-            FundsAmount.Instance.playerMoney -= mushroomSeedPrice; // If The Player Has Enough Gold, Deduct The Price
-            // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
-            // InventoryManager.Instance.AddItem("MushroomSeed", 1);
+            FundsAmount.Instance.playerMoney -= mushroomSeedPrice; // Deduct The Price
+            InventoryManager.Instance.AddItem(mushroomSeedItem, 1); // Add to inventory
             Debug.Log("Mushroom Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
         }
         else
+        {
             Debug.Log("Not enough gold to buy Mushroom Seeds."); // Insufficient funds
+        }
     }
 
     // FUNCTION TO BUY CARROT SEEDS
@@ -88,22 +94,31 @@ public class MarketManager : MonoBehaviour
         Debug.Log("Attempting to buy Carrot Seeds for " + carrotSeedPrice + " gold.");
         if(FundsAmount.Instance.playerMoney >= carrotSeedPrice) // Check If The Player Has Enough Gold
         {
-            FundsAmount.Instance.playerMoney -= carrotSeedPrice; // If The Player Has Enough Gold, Deduct The Price
-            // CHANGE THIS LINE WHEN WE HAVE THE INVENTORY:
-            // InventoryManager.Instance.AddItem("CarrotSeed", 1);
+            FundsAmount.Instance.playerMoney -= carrotSeedPrice; // Deduct The Price
+            InventoryManager.Instance.AddItem(carrotSeedItem, 1); // Add to inventory
             Debug.Log("Carrot Seeds Purchased. Remaining Gold: " + FundsAmount.Instance.playerMoney); // Successful purchase
         }
         else
+        {
             Debug.Log("Not enough gold to buy Carrot Seeds."); // Insufficient funds
+        }
     }
 
     // FUNCTION TO SELL TOMATO CROPS
     public void SellTomatoCrops()
     {
-        if(tempTomatoCropsAmount > 0)
+        if (tomatoCropItem == null)
+        {
+            Debug.LogError("Tomato Crop ItemData not assigned!");
+            return;
+        }
+
+        // Find the item in inventory
+        int slotIndex = FindItemInInventory(tomatoCropItem);
+        if (slotIndex >= 0)
         {
             Debug.Log("Selling a Tomato Crop.");
-            tempTomatoCropsAmount--; // Subtract One From The Temporary Crop Amount
+            InventoryManager.Instance.RemoveFromSlot(slotIndex, 1); // Remove one from inventory
             FundsAmount.Instance.playerMoney += tomatoCropProfit; // Add The Profit To The Player's Gold
         }
         else
@@ -115,10 +130,18 @@ public class MarketManager : MonoBehaviour
     // FUNCTION TO SELL EGGPLANT CROPS
     public void SellEggplantCrops()
     {
-        if (tempEggplantCropsAmount > 0)
+        if (eggplantCropItem == null)
+        {
+            Debug.LogError("Eggplant Crop ItemData not assigned!");
+            return;
+        }
+
+        // Find the item in inventory
+        int slotIndex = FindItemInInventory(eggplantCropItem);
+        if (slotIndex >= 0)
         {
             Debug.Log("Selling a Eggplant Crop.");
-            tempEggplantCropsAmount--; // Subtract One From The Temporary Crop Amount
+            InventoryManager.Instance.RemoveFromSlot(slotIndex, 1); // Remove one from inventory
             FundsAmount.Instance.playerMoney += eggplantCropProfit; // Add The Profit To The Player's Gold
         }
         else
@@ -130,10 +153,18 @@ public class MarketManager : MonoBehaviour
     // FUNCTION TO SELL MUSHROOMS CROPS
     public void SellMushroomCrops()
     {
-        if (tempMushroomCropsAmount > 0)
+        if (mushroomCropItem == null)
+        {
+            Debug.LogError("Mushroom Crop ItemData not assigned!");
+            return;
+        }
+
+        // Find the item in inventory
+        int slotIndex = FindItemInInventory(mushroomCropItem);
+        if (slotIndex >= 0)
         {
             Debug.Log("Selling a Mushroom Crop.");
-            tempMushroomCropsAmount--; // Subtract One From The Temporary Crop Amount
+            InventoryManager.Instance.RemoveFromSlot(slotIndex, 1); // Remove one from inventory
             FundsAmount.Instance.playerMoney += mushroomCropProfit; // Add The Profit To The Player's Gold
         }
         else
@@ -145,15 +176,37 @@ public class MarketManager : MonoBehaviour
     // FUNCTION TO SELL CARROT CROPS
     public void SellCarrotCrops()
     {
-        if (tempCarrotCropsAmount > 0)
+        if (carrotCropItem == null)
+        {
+            Debug.LogError("Carrot Crop ItemData not assigned!");
+            return;
+        }
+
+        // Find the item in inventory
+        int slotIndex = FindItemInInventory(carrotCropItem);
+        if (slotIndex >= 0)
         {
             Debug.Log("Selling a Carrot Crop.");
-            tempCarrotCropsAmount--; // Subtract One From The Temporary Crop Amount
+            InventoryManager.Instance.RemoveFromSlot(slotIndex, 1); // Remove one from inventory
             FundsAmount.Instance.playerMoney += carrotCropProfit; // Add The Profit To The Player's Gold
         }
         else
         {
             Debug.Log("No Carrot Crops Available To Sell.");
         }
+    }
+
+    // HELPER FUNCTION TO FIND ITEM IN INVENTORY
+    private int FindItemInInventory(ItemData item)
+    {
+        for (int i = 0; i < InventoryManager.Instance.slots.Count; i++)
+        {
+            var slot = InventoryManager.Instance.GetSlot(i);
+            if (slot != null && !slot.IsEmpty && slot.item == item)
+            {
+                return i;
+            }
+        }
+        return -1; // Not found
     }
 }

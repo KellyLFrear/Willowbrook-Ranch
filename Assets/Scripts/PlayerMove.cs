@@ -13,6 +13,18 @@ public class PlayerMove : MonoBehaviour
     public float sprintSpeed = 6f;// Speed when sprinting
     public float curSpeed;// Tracks the active movement speed
 
+    [Header("Speed Mode Settings")]
+    [Tooltip("Enable SPEED MODE for ultra-fast movement")]
+    [SerializeField] private bool SPEED_MODE = false;
+    public bool SPEEED { get => SPEED_MODE; set => SPEED_MODE = value; }
+    public float speedModeForwardSpeed = 30f; // Speed mode forward speed
+    public float speedModeRotationSpeed = 280f; // Speed mode rotation speed
+
+    [Header("Grounding Settings")]
+    public float groundingForce = 100f; // Force to keep player grounded at high speeds
+    public LayerMask groundLayer = -1; // Layer mask for ground detection (default: Everything)
+    public float groundCheckDistance = 0.25f; // Distance to check for ground
+
     // Input Actions
     InputAction moveAction;
     InputAction sprintAction;//Action for sprinting
@@ -41,8 +53,10 @@ public class PlayerMove : MonoBehaviour
 
     void OnDisable()
     {
-        moveAction.Disable();
-        sprintAction.Disable();
+        if (moveAction != null)
+            moveAction.Disable();
+        if (sprintAction != null)
+            sprintAction.Disable();
     }
 
     void Update()
@@ -55,8 +69,12 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        // update curSpeed based on the sprinting state
-        if (IsSprinting)
+        // update curSpeed based on the sprinting state and speed mode
+        if (SPEED_MODE)
+        {
+            curSpeed = speedModeForwardSpeed;
+        }
+        else if (IsSprinting)
         {
             curSpeed = sprintSpeed;
         }
@@ -66,6 +84,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         MoveAndRotatePlayer();
+        ApplyGroundingForce();
     }
 
     private void MoveAndRotatePlayer()
@@ -82,9 +101,41 @@ public class PlayerMove : MonoBehaviour
 
         float rotateInput = MoveValue.x;
 
-        //rotation logic remains the same
-        float yaw = rotateInput * rotationSpeed * Time.fixedDeltaTime;
+        // Use speed mode rotation speed if enabled
+        float currentRotationSpeed = SPEED_MODE ? speedModeRotationSpeed : rotationSpeed;
+
+        //rotation logic with dynamic rotation speed
+        float yaw = rotateInput * currentRotationSpeed * Time.fixedDeltaTime;
         Quaternion rotation = Quaternion.Euler(0f, yaw, 0f);
         rb.MoveRotation(rb.rotation * rotation);
+    }
+
+    private void ApplyGroundingForce()
+    {
+        if (!SPEED_MODE) return;
+
+        // Raycast downward to check if player is near ground
+        RaycastHit hit;
+        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundLayer);
+
+        // Kill upward velocity to prevent launches
+        if (rb.linearVelocity.y > 0.01f)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        }
+
+        if (isGrounded)
+        {
+            // Only apply force if we're starting to lift off, not if we're already on ground
+            if (hit.distance > 0.15f)
+            {
+                rb.AddForce(Vector3.down * groundingForce, ForceMode.Force);
+            }
+        }
+        else
+        {
+            // If airborne, apply moderate force to bring back down
+            rb.AddForce(Vector3.down * groundingForce * 2f, ForceMode.Force);
+        }
     }
 }
