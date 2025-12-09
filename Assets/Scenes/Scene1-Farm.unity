@@ -2530,9 +2530,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3669814864605823920, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8447773166402305943, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
       propertyPath: m_Name
       value: SlotUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447773166402305943, guid: f047d180fea90334da38eed6a2b5c3d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9276,6 +9284,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3458248955768061082, guid: 982d86a08033e3e4c81b96929131a643, type: 3}
   m_PrefabInstance: {fileID: 1198586325}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1213944128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213944129}
+  - component: {fileID: 1213944130}
+  m_Layer: 0
+  m_Name: StartingInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1213944129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213944128}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.54877, y: 3.44514, z: 27.28359}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1213944130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213944128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ca50e0af661af4791a7434eb3e4470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartingInventory
+  tomatoSeeds: {fileID: 11400000, guid: 819b529863d3b5f4893f7a617e7e6670, type: 2}
+  tomatoSeedsAmount: 5
+  eggplantSeeds: {fileID: 11400000, guid: c6e983a5fb0de27409d3fd31febad27e, type: 2}
+  eggplantSeedsAmount: 5
+  mushroomSeeds: {fileID: 11400000, guid: 19a995f1ccc236043b9e169f31d16712, type: 2}
+  mushroomSeedsAmount: 5
+  carrotSeeds: {fileID: 11400000, guid: 4cc893cef8a1969489eda6908918059a, type: 2}
+  carrotSeedsAmount: 5
+  tomatoCrop: {fileID: 11400000, guid: aa0d7c714958a184c8b86d1d98f63132, type: 2}
+  tomatoCropAmount: 5
+  eggplantCrop: {fileID: 11400000, guid: 5b46f9bb949767740b5ba4c4b02d4728, type: 2}
+  eggplantCropAmount: 5
+  mushroomCrop: {fileID: 11400000, guid: 990f14a004b61a947a5b00c2e71f2f6f, type: 2}
+  mushroomCropAmount: 5
+  carrotCrop: {fileID: 11400000, guid: aeef3018759fe344d89616db14cd5c0a, type: 2}
+  carrotCropAmount: 5
+  carp: {fileID: 11400000, guid: 19ecf4de4db50d749a0e62dbd66e4099, type: 2}
+  carpAmount: 5
+  largemouthBass: {fileID: 11400000, guid: a074606d9a448d94782c8c0726df8bad, type: 2}
+  largemouthBassAmount: 5
+  wateringCan: {fileID: 11400000, guid: 97d586398f79cc24aa00fb8181af1a07, type: 2}
+  wateringCanAmount: 1
+  shovel: {fileID: 11400000, guid: 3e1959c07271cee4493ecc9955362f3d, type: 2}
+  shovelAmount: 1
 --- !u!1001 &1273524238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18240,3 +18316,4 @@ SceneRoots:
   - {fileID: 163063293}
   - {fileID: 1183350982}
   - {fileID: 1150792434}
+  - {fileID: 1213944129}
