@@ -29,10 +29,19 @@ public class InventorySlotUI : MonoBehaviour
             iconImage.enabled = true;
             iconImage.sprite = slot.item.icon;
 
-            // Only show number if stacked
-            amountText.text = (slot.item.maxStack > 1 && slot.amount > 1)
-                ? slot.amount.ToString()
-                : "";
+            // Only show number if quantity > 1
+            if (slot.amount > 1)
+            {
+                amountText.text = slot.amount.ToString();
+                amountText.color = Color.white;
+                amountText.fontStyle = FontStyles.Bold;
+                amountText.outlineWidth = 0.3f;
+                amountText.outlineColor = new Color32(10, 1, 0, 255);
+            }
+            else
+            {
+                amountText.text = "";
+            }
         }
     }
 
